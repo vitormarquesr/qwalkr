@@ -4,23 +4,26 @@
 \alias{ctqwalk}
 \title{Create a Continuous-time Quantum Walk}
 \usage{
-ctqwalk(hamiltonian)
+ctqwalk(hamiltonian, ...)
 }
 \arguments{
 \item{hamiltonian}{a Hermitian Matrix representing the Hamiltonian of the system.}
+
+\item{...}{further arguments passed on to \code{\link[=spectral]{spectral()}}}
 }
 \value{
-An object of class "ctqwalk" containing the continuous-time quantum walk
-object.
+A list with the walk related objects, i.e the hamiltonian and its spectral
+decomposition (See \code{\link[=spectral]{spectral()}} for further details)
 }
 \description{
-Function to create a continuous-time quantum walk (ctqwalk) object.
+\code{ctqwalk()} creates a quantum walk object from a hamiltonian.
 }
 \examples{
-# Quantum walk on the Path graph with three vertices, the hamiltonian is the adjacency matrix.
-P3 <- matrix(c(0,1,0,1,0,1,0,1,0), nrow=3)
 
-walk <- ctqwalk(P3)
+ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
 
 
+}
+\seealso{
+\code{\link[=spectral]{spectral()}}
 }

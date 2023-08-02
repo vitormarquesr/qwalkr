@@ -2,38 +2,32 @@
 
 #' Create a Continuous-time Quantum Walk
 #'
-#' @description Function to create a continuous-time quantum walk (ctqwalk) object.
+#' @description `ctqwalk()` creates a quantum walk object from a hamiltonian.
 #'
 #' @param hamiltonian  a Hermitian Matrix representing the Hamiltonian of the system.
+#' @param ... further arguments passed on to [qwalkr::spectral()]
 #'
-#' @return An object of class "ctqwalk" containing the continuous-time quantum walk
-#'   object.
+#' @returns A list with the walk related objects, i.e the hamiltonian and its spectral
+#'   decomposition (See [qwalkr::spectral()] for further details)
+#'
+#' @seealso [qwalkr::spectral()]
 #' @export
 #'
 #' @examples
-#' # Quantum walk on the Path graph with three vertices, the hamiltonian is the adjacency matrix.
-#' P3 <- matrix(c(0,1,0,1,0,1,0,1,0), nrow=3)
 #'
-#' walk <- ctqwalk(P3)
+#' ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
 #'
 #'
-ctqwalk <- function(hamiltonian){
+ctqwalk <- function(hamiltonian, ...){
   if(!isSymmetric(hamiltonian)){
     warning("The Hamiltonian must be a Hermitian matrix!")
     return(NULL)
   }
-  spectral <- eigen(hamiltonian, symmetric = TRUE)
 
-  output <- list(hamiltonian = hamiltonian,
-                 eigvals=spectral$values,
-                 eigid = label_unique(spectral$values),
-                 eigvectors=spectral$vectors)
+  output <- c(list(hamiltonian=hamiltonian), spectral(hamiltonian, symmetric=TRUE, ...))
 
+  class(output) <- c("ctqwalk", "spectral")
 
-  class(output) <- c("ctqwalk", "qwalk")
-
-  return(output)
+  return (output)
 }
-
-
 
