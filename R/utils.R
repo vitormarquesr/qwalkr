@@ -18,3 +18,17 @@ label_unique <- function(x, tol = .Machine$double.eps^0.5){
   return(labeled)
 }
 
+index_eigspace <- function(mult, id){
+  if (id == 1){
+    idx_start <- 1
+  }else{
+    idx_start <- sum(mult[1:(id-1)])+1
+  }
+  return(idx_start:(idx_start + mult[id]-1))
+}
+
+out_of_bounds <- function(id, lower, upper){
+  return (any((id < lower) | (id > upper)))
+}
+
+

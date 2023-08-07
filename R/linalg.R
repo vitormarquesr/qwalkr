@@ -1,6 +1,6 @@
 #' Spectral Decomposition of a Matrix
 #'
-#' @description `spectral()` is a wrapper around [base::eigen()] that can handle repeated eigenvalues.
+#' @description `spectral()` is a wrapper around [base::eigen()] which can handle repeated eigenvalues.
 #'
 #' @param A a square matrix.
 #' @param multiplicity if `TRUE` (default), tries to infer eigenvalue multiplicity. If set to
@@ -53,6 +53,141 @@ spectral <- function(A, multiplicity = TRUE, tol=.Machine$double.eps^0.5, ...){
   class(output) <- "spectral"
 
   return (output)
+}
+
+#' Generic S3 method extractEIGSPACE
+#'
+#' @param object an object containing the spectral decomposition of a matrix.
+#' @param ... further arguments passed to or from other methods.
+#'
+#' @returns The eigenbasis of the desired eigenspace.
+#' @seealso [qwalkr::extractPROJ], [qwalkr::extractSCHUR],
+#'   [qwalkr::extractEIGSPACE.spectral]
+#' @export
+#'
+extractEIGSPACE <- function(object, ...) UseMethod("extractEIGSPACE")
+
+
+#' extractEIGSPACE method for spectral objects
+#'
+#' @param object an object of class spectral.
+#' @param id index of the eigenspace according to the ordered (decreasing) spectra.
+#' @param ... further arguments passed to or from other methods.
+#' @returns A matrix whose columns form the orthonormal eigenbasis.
+#' @export
+#' @seealso [qwalkr::spectral], [qwalkr::extractEIGSPACE]
+#'
+#' @examples
+#' # Spectra is {2, -1} with multiplicities one and two respectively.
+#' decomp <- spectral(matrix(c(0,1,1,1,0,1,1,1,0), nrow=3))
+#'
+#' # Returns the two orthonormal eigenvectors corresponding to the eigenvalue -1.
+#' extractEIGSPACE(decomp, id=2)
+#'
+#' # Returns the eigenvector corresponding to the eigenvalue 2.
+#' extractEIGSPACE(decomp, id=1)
+#'
+extractEIGSPACE.spectral <- function(object, id, ...){
+  if (out_of_bounds(id, 1, length(object$multiplicity))){
+    warning("Index out of bounds! Check the length of the spectra.")
+    return(NULL)
+  }
+
+  return (object$eigvectors[, index_eigspace(object$multiplicity, id), drop=FALSE])
+}
+
+#' Generic S3 method extractPROJ
+#'
+#' @param object an object containing the spectral decomposition of a matrix.
+#' @param ... further arguments passed to or from other methods.
+#'
+#' @returns The orthogonal projector of the desired eigenspace.
+#' @seealso [qwalkr::extractEIGSPACE], [qwalkr::extractSCHUR],
+#'    [qwalkr::extractPROJ.spectral]
+#' @export
+#'
+extractPROJ <- function(object, ...) UseMethod("extractPROJ")
+
+#' extractPROJ method for spectral objects
+#'
+#' @param object an object of class spectral.
+#' @param id index of the eigenspace according to the ordered (decreasing) spectra.
+#' @param ... further arguments passed to or from other methods.
+#'
+#' @returns The orthogonal projector of the desired eigenspace. Note
+#'    that its rank is equal to the multiplicity of the eigenvalue.
+#'
+#' @seealso [qwalkr::spectral], [qwalkr::extractPROJ]
+#'
+#' @export
+#'
+#' @examples
+#' # Spectra is {2, -1} with multiplicities one and two respectively.
+#' decomp <- spectral(matrix(c(0,1,1,1,0,1,1,1,0), nrow=3))
+#'
+#' # Returns the projector associated to the eigenvalue -1.
+#' extractPROJ(decomp, id=2)
+#'
+#' # Returns the projector associated to the eigenvalue 2.
+#' extractPROJ(decomp, id=1)
+#'
+extractPROJ.spectral <- function(object, id, ...){
+  if (out_of_bounds(id, 1, length(object$multiplicity))){
+    warning("Index out of bounds! Check the length of the spectra.")
+    return(NULL)
+  }
+
+  A <- extractEIGSPACE.spectral(object, id)
+  return (A %*% t(A))
+}
+
+#' Generic S3 method extractSCHUR
+#'
+#' @param object an object containing the spectral decomposition of a matrix.
+#' @param ... further arguments passed to or from other methods.
+#'
+#' @returns The Schur product of eigenprojectors.
+#' @seealso [qwalkr::extractEIGSPACE], [qwalkr::extractSCHUR],
+#'    [qwalkr::extractSCHUR.spectral]
+#' @export
+#'
+extractSCHUR <- function(object, ...) UseMethod("extractSCHUR")
+
+#' extractSCHUR method for spectral objects
+#'
+#' @param object an object of class spectral.
+#' @param id1 index of the first eigenspace according to the ordered (decreasing) spectra.
+#' @param id2 index of the second eigenspace according to the ordered (decreasing) spectra. Defaults to
+#'   the same index as id1.
+#' @param ... further arguments passed to or from other methods.
+#'
+#' @returns The Schur product of the corresponding eigenprojectors.
+#'
+#' @seealso [qwalkr::spectral], [qwalkr::extractSCHUR]
+#'
+#' @export
+#'
+#' @examples
+#' # Spectra is {2, -1} with multiplicities one and two respectively.
+#' decomp <- spectral(matrix(c(0,1,1,1,0,1,1,1,0), nrow=3))
+#'
+#' # Returns the Schur product between the 2-projector and -1-projector.
+#' extractSCHUR(decomp, id1=2, id2=1)
+#'
+#' # Returns the Schur square of the 2-projector.
+#' extractSCHUR(decomp, id1=1, id2=1)
+#'
+#' # Also returns the Schur square of the 2-projector (Default of id2 is id1)
+#' extractSCHUR(decomp, id1=1)
+#'
+extractSCHUR.spectral <- function(object, id1, id2=id1, ...){
+  if (out_of_bounds(c(id1, id2), 1, length(object$multiplicity))){
+    warning("Index out of bounds! Check the length of the spectra.")
+    return(NULL)
+  }
+  E_r <- extractPROJ.spectral(object, id1)
+  E_s <- extractPROJ.spectral(object, id2)
+  return (E_r * E_s)
 }
 
 

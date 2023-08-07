@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#'
+#' # Creates a walk from the adjacency matrix of the graph P3.
 #' ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
 #'
 #'

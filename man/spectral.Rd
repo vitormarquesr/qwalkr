@@ -26,7 +26,7 @@ according to \code{eigvals}. Note that there may be more eigenvectors than eigen
 \code{multiplicity=TRUE}, however eigenvectors of the same eigenspace are next to each other.}
 }
 \description{
-\code{spectral()} is a wrapper around \code{\link[base:eigen]{base::eigen()}} that can handle repeated eigenvalues.
+\code{spectral()} is a wrapper around \code{\link[base:eigen]{base::eigen()}} which can handle repeated eigenvalues.
 }
 \examples{
 spectral(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
