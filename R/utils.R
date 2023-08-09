@@ -12,18 +12,14 @@ label_unique <- function(x, tol = .Machine$double.eps^0.5){
     if ((i == 1) || !equal(x[i], x[i-1L], tol=tol)){
       idx <- idx + 1L
     }
-    labeled[i] <- idx
+    labeled[[i]] <- idx
   }
 
   return(labeled)
 }
 
 index_eigspace <- function(mult, id){
-  if (id == 1){
-    idx_start <- 1
-  }else{
-    idx_start <- sum(mult[1:(id-1)])+1
-  }
+  idx_start <- sum(mult[seq_len(id-1)]) + 1
   return(idx_start:(idx_start + mult[id]-1))
 }
 

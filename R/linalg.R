@@ -37,7 +37,6 @@ spectral <- function(A, multiplicity = TRUE, tol=.Machine$double.eps^0.5, ...){
 
   n <- nrow(A)
 
-
   output <- list(eigvals = eigen_decomp$values,
                  multiplicity = rep(1, n),
                  eigvectors = eigen_decomp$vectors)
