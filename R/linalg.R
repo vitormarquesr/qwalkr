@@ -33,21 +33,15 @@
 #'
 spectral <- function(A, multiplicity = TRUE, tol=.Machine$double.eps^0.5, ...){
 
-  eigen_decomp <- eigen(A, ...)
+  decomp <- eigen(A, ...)
 
   n <- nrow(A)
 
-  output <- list(eigvals = eigen_decomp$values,
-                 multiplicity = rep(1, n),
-                 eigvectors = eigen_decomp$vectors)
+  idx_eigvals <- if (multiplicity) unique_eigvals(decomp$values, tol=tol) else rep(TRUE, n)
 
-  if (multiplicity){
-    label_eigvals <- label_unique(output$eigvals, tol)
-
-    output$eigvals <- output$eigvals[!duplicated(label_eigvals)]
-
-    output$multiplicity <-  tabulate(label_eigvals)
-  }
+  output <- list(eigvals = decomp$values[idx_eigvals],
+                 multiplicity = mult_eigvals(idx_eigvals),
+                 eigvectors = decomp$vectors)
 
   class(output) <- "spectral"
 

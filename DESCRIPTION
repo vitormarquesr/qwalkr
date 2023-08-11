@@ -1,5 +1,5 @@
 Package: qwalkr
-Title: Handle Continuous-Time Quantum Walks with 'R'
+Title: Handle Continuous-Time Quantum Walks with R
 Version: 0.0.0.9000
 Authors@R: 
     person("Vitor", "Marques", , "vmrodriguespro@gmail.com", role = c("aut", "cre"))
