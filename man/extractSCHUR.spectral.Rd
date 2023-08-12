@@ -4,15 +4,15 @@
 \alias{extractSCHUR.spectral}
 \title{extractSCHUR method for spectral objects}
 \usage{
-\method{extractSCHUR}{spectral}(object, id1, id2 = id1, ...)
+\method{extractSCHUR}{spectral}(object, id1, id2 = NULL, ...)
 }
 \arguments{
 \item{object}{an object of class spectral.}
 
-\item{id1}{index of the first eigenspace according to the ordered (decreasing) spectra.}
+\item{id1}{index for the first eigenspace according to the ordered (decreasing) spectra.}
 
-\item{id2}{index of the second eigenspace according to the ordered (decreasing) spectra. Defaults to
-the same index as id1.}
+\item{id2}{index for the second eigenspace according to the ordered (decreasing) spectra. If not provided,
+it takes the same value as \code{id1}.}
 
 \item{...}{further arguments passed to or from other methods.}
 }
@@ -32,7 +32,7 @@ extractSCHUR(decomp, id1=2, id2=1)
 # Returns the Schur square of the 2-projector.
 extractSCHUR(decomp, id1=1, id2=1)
 
-# Also returns the Schur square of the 2-projector (Default of id2 is id1)
+# Also returns the Schur square of the 2-projector
 extractSCHUR(decomp, id1=1)
 
 }

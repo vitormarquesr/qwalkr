@@ -64,7 +64,7 @@ extractEIGSPACE <- function(object, ...) UseMethod("extractEIGSPACE")
 #' extractEIGSPACE method for spectral objects
 #'
 #' @param object an object of class spectral.
-#' @param id index of the eigenspace according to the ordered (decreasing) spectra.
+#' @param id index for the desired eigenspace according to the ordered (decreasing) spectra.
 #' @param ... further arguments passed to or from other methods.
 #' @returns A matrix whose columns form the orthonormal eigenbasis.
 #' @export
@@ -104,7 +104,7 @@ extractPROJ <- function(object, ...) UseMethod("extractPROJ")
 #' extractPROJ method for spectral objects
 #'
 #' @param object an object of class spectral.
-#' @param id index of the eigenspace according to the ordered (decreasing) spectra.
+#' @param id index for the desired eigenspace according to the ordered (decreasing) spectra.
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns The orthogonal projector of the desired eigenspace. Note
@@ -149,9 +149,9 @@ extractSCHUR <- function(object, ...) UseMethod("extractSCHUR")
 #' extractSCHUR method for spectral objects
 #'
 #' @param object an object of class spectral.
-#' @param id1 index of the first eigenspace according to the ordered (decreasing) spectra.
-#' @param id2 index of the second eigenspace according to the ordered (decreasing) spectra. Defaults to
-#'   the same index as id1.
+#' @param id1 index for the first eigenspace according to the ordered (decreasing) spectra.
+#' @param id2 index for the second eigenspace according to the ordered (decreasing) spectra. If not provided,
+#'    it takes the same value as `id1`.
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns The Schur product of the corresponding eigenprojectors.
@@ -170,10 +170,13 @@ extractSCHUR <- function(object, ...) UseMethod("extractSCHUR")
 #' # Returns the Schur square of the 2-projector.
 #' extractSCHUR(decomp, id1=1, id2=1)
 #'
-#' # Also returns the Schur square of the 2-projector (Default of id2 is id1)
+#' # Also returns the Schur square of the 2-projector
 #' extractSCHUR(decomp, id1=1)
 #'
-extractSCHUR.spectral <- function(object, id1, id2=id1, ...){
+extractSCHUR.spectral <- function(object, id1, id2=NULL, ...){
+
+  id2 <- if(is.null(id2)) id1 else id2
+
   if (out_of_bounds(c(id1, id2), 1, length(object$multiplicity))){
     warning("Index out of bounds! Check the length of the spectra.")
     return(NULL)

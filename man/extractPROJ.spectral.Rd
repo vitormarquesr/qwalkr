@@ -9,7 +9,7 @@
 \arguments{
 \item{object}{an object of class spectral.}
 
-\item{id}{index of the eigenspace according to the ordered (decreasing) spectra.}
+\item{id}{index for the desired eigenspace according to the ordered (decreasing) spectra.}
 
 \item{...}{further arguments passed to or from other methods.}
 }
