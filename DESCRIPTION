@@ -2,11 +2,17 @@ Package: qwalkr
 Title: Handle Continuous-Time Quantum Walks with R
 Version: 0.0.0.9000
 Authors@R: 
-    person("Vitor", "Marques", email="vmrodriguespro@gmail.com", role = c("aut", "cre"))
-Description: Functions and methods to create, visualize, and investigate properties of
-   Continous-Time Quantum Walks. In addition, functions to efficiently calculate linear 
-   algebra objects that arise in the context of Quantum Walks.
+    person("Vitor", "Marques", , "vmrodriguespro@gmail.com", role = c("aut", "cre"))
+Description: Functions and methods to create, visualize, and investigate
+    properties of Continous-Time Quantum Walks. In addition, tools to
+    efficiently calculate matrices that arise in the context of Quantum
+    Walks.
 License: MIT + file LICENSE
+URL: https://github.com/vitormarquesr/qwalkr
+BugReports: https://github.com/vitormarquesr/qwalkr/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
