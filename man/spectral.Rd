@@ -2,12 +2,13 @@
 % Please edit documentation in R/linalg.R
 \name{spectral}
 \alias{spectral}
-\title{Spectral Decomposition of a Matrix}
+\title{Spectral Decomposition of a Hermitian Matrix}
 \usage{
-spectral(A, multiplicity = TRUE, tol = .Machine$double.eps^0.5, ...)
+spectral(S, multiplicity = TRUE, tol = .Machine$double.eps^0.5, ...)
 }
 \arguments{
-\item{A}{a square matrix.}
+\item{S}{a Hermitian matrix. \emph{Obs}: The matrix is always assumed to be Hermitian,
+and only its lower triangle (diagonal included) is used.}
 
 \item{multiplicity}{if \code{TRUE} (default), tries to infer eigenvalue multiplicity. If set to
 \code{FALSE}, each eigenvalue is considered unique with multiplicity one.}
@@ -18,15 +19,24 @@ spectral(A, multiplicity = TRUE, tol = .Machine$double.eps^0.5, ...)
 \item{...}{further arguments passed on to \code{\link[base:eigen]{base::eigen()}}}
 }
 \value{
-The spectral decomposition of \code{A} is returned as a list with components
-\item{eigvals}{vector containing the unique eigenvalues of \code{A} in \emph{decreasing} order.}
+The spectral decomposition of \code{S} is returned as a list with components
+\item{eigvals}{vector containing the unique eigenvalues of \code{S} in \emph{decreasing} order.}
 \item{multiplicity}{multiplicities of the eigenvalues in \code{eigvals}.}
-\item{eigvectors}{a \verb{nrow(A) x nrow(A)} matrix whose columns are eigenvectors ordered
+\item{eigvectors}{a \verb{nrow(S) x nrow(S)} matrix whose columns are eigenvectors ordered
 according to \code{eigvals}. Note that there may be more eigenvectors than eigenvalues if
 \code{multiplicity=TRUE}, however eigenvectors of the same eigenspace are next to each other.}
+
+The Spectral Theorem ensures the eigenvalues of \code{S} are real and that the vector space
+admits an orthonormal basis consisting of eigenvectors of \code{S}. Thus, if \code{s <- spectral(S)},
+and \verb{V <- s$eigvectors; lam <- s$eigvals}, then
+
+\deqn{S = V \Lambda V^{*}}
+
+where \eqn{\Lambda =\ }\code{diag(rep(lam, times=s$multiplicity))}
 }
 \description{
-\code{spectral()} is a wrapper around \code{\link[base:eigen]{base::eigen()}} which can handle repeated eigenvalues.
+\code{spectral()} is a wrapper around \code{\link[base:eigen]{base::eigen()}} designed for Hermitian matrices,
+which can handle repeated eigenvalues.
 }
 \examples{
 spectral(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
@@ -37,10 +47,8 @@ spectral(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3), tol=10e-5)
 # Use "multiplicity=FALSE" to force each eigenvalue to be considered unique
 spectral(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3), multiplicity = FALSE)
 
-# Use ... to pass additional arguments to eigen()
-spectral(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3), symmetric=TRUE)
-
 }
 \seealso{
-\code{\link[base:eigen]{base::eigen()}}
+\code{\link[base:eigen]{base::eigen()}}, \link{extractEIGSPACE.spectral},
+\link{extractPROJ.spectral}, \link{extractSCHUR.spectral}
 }

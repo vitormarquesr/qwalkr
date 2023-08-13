@@ -1,22 +1,34 @@
-#' Spectral Decomposition of a Matrix
+#' Spectral Decomposition of a Hermitian Matrix
 #'
-#' @description `spectral()` is a wrapper around [base::eigen()] which can handle repeated eigenvalues.
+#' @description `spectral()` is a wrapper around [base::eigen()] designed for Hermitian matrices,
+#'   which can handle repeated eigenvalues.
 #'
-#' @param A a square matrix.
+#' @param S a Hermitian matrix. *Obs*: The matrix is always assumed to be Hermitian,
+#'   and only its lower triangle (diagonal included) is used.
 #' @param multiplicity if `TRUE` (default), tries to infer eigenvalue multiplicity. If set to
-#'    `FALSE`, each eigenvalue is considered unique with multiplicity one.
+#'   `FALSE`, each eigenvalue is considered unique with multiplicity one.
 #' @param tol two eigenvalues `x`, `y` are considered equal if `abs(x-y) < tol`. Defaults to
-#'    `tol=.Machine$double.eps^0.5`.
+#'   `tol=.Machine$double.eps^0.5`.
 #' @param ... further arguments passed on to [base::eigen()]
 #'
-#' @returns The spectral decomposition of `A` is returned as a list with components
-#' \item{eigvals}{vector containing the unique eigenvalues of `A` in *decreasing* order.}
-#' \item{multiplicity}{multiplicities of the eigenvalues in `eigvals`.}
-#' \item{eigvectors}{a `nrow(A) x nrow(A)` matrix whose columns are eigenvectors ordered
-#' according to `eigvals`. Note that there may be more eigenvectors than eigenvalues if
-#' `multiplicity=TRUE`, however eigenvectors of the same eigenspace are next to each other.}
+#' @returns The spectral decomposition of `S` is returned as a list with components
+#'   \item{eigvals}{vector containing the unique eigenvalues of `S` in *decreasing* order.}
+#'   \item{multiplicity}{multiplicities of the eigenvalues in `eigvals`.}
+#'   \item{eigvectors}{a `nrow(S) x nrow(S)` matrix whose columns are eigenvectors ordered
+#'   according to `eigvals`. Note that there may be more eigenvectors than eigenvalues if
+#'   `multiplicity=TRUE`, however eigenvectors of the same eigenspace are next to each other.}
 #'
-#' @seealso [base::eigen()]
+#'   The Spectral Theorem ensures the eigenvalues of `S` are real and that the vector space
+#'   admits an orthonormal basis consisting of eigenvectors of `S`. Thus, if `s <- spectral(S)`,
+#'   and `V <- s$eigvectors; lam <- s$eigvals`, then
+#'
+#'   \deqn{S = V \Lambda V^{*}}
+#'
+#'   where \eqn{\Lambda =\ }`diag(rep(lam, times=s$multiplicity))`
+#'
+#' @seealso [base::eigen()], [qwalkr::extractEIGSPACE.spectral],
+#'   [qwalkr::extractPROJ.spectral], [qwalkr::extractSCHUR.spectral]
+#'
 #' @export
 #'
 #' @examples
@@ -28,14 +40,11 @@
 #' # Use "multiplicity=FALSE" to force each eigenvalue to be considered unique
 #' spectral(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3), multiplicity = FALSE)
 #'
-#' # Use ... to pass additional arguments to eigen()
-#' spectral(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3), symmetric=TRUE)
-#'
-spectral <- function(A, multiplicity = TRUE, tol=.Machine$double.eps^0.5, ...){
+spectral <- function(S, multiplicity = TRUE, tol=.Machine$double.eps^0.5, ...){
 
-  decomp <- eigen(A, ...)
+  decomp <- eigen(S, symmetric=TRUE, ...)
 
-  n <- nrow(A)
+  n <- nrow(S)
 
   idx_eigvals <- if (multiplicity) unique_eigvals(decomp$values, tol=tol) else rep(TRUE, n)
 
@@ -67,6 +76,10 @@ extractEIGSPACE <- function(object, ...) UseMethod("extractEIGSPACE")
 #' @param id index for the desired eigenspace according to the ordered (decreasing) spectra.
 #' @param ... further arguments passed to or from other methods.
 #' @returns A matrix whose columns form the orthonormal eigenbasis.
+#'
+#'   If `s <- spectral(A)` and `V <- s$eigvectors`, then the extracted eigenspace
+#'   \eqn{V_{id}} is some submatrix `V[, _]`.
+#'
 #' @export
 #' @seealso [qwalkr::spectral], [qwalkr::extractEIGSPACE]
 #'
@@ -107,8 +120,13 @@ extractPROJ <- function(object, ...) UseMethod("extractPROJ")
 #' @param id index for the desired eigenspace according to the ordered (decreasing) spectra.
 #' @param ... further arguments passed to or from other methods.
 #'
-#' @returns The orthogonal projector of the desired eigenspace. Note
-#'    that its rank is equal to the multiplicity of the eigenvalue.
+#' @returns The orthogonal projector of the desired eigenspace.
+#'
+#'   A Hermitian matrix `S` admits the spectral decomposition \eqn{S = \sum_{r}\lambda_r E_r}
+#'   such that \eqn{E_r} is the orthogonal projector onto the \eqn{\lambda_r}-eigenspace. If \eqn{V_{id}}
+#'   is the matrix associated to the eigenspace, then
+#'
+#'   \deqn{E_{id} = V_{id}V_{id}^*}
 #'
 #' @seealso [qwalkr::spectral], [qwalkr::extractPROJ]
 #'
@@ -154,7 +172,7 @@ extractSCHUR <- function(object, ...) UseMethod("extractSCHUR")
 #'    it takes the same value as `id1`.
 #' @param ... further arguments passed to or from other methods.
 #'
-#' @returns The Schur product of the corresponding eigenprojectors.
+#' @returns The Schur product of the corresponding eigenprojectors, \eqn{E_{id_1} \circ E_{id_2}}.
 #'
 #' @seealso [qwalkr::spectral], [qwalkr::extractSCHUR]
 #'

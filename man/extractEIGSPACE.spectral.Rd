@@ -15,6 +15,9 @@
 }
 \value{
 A matrix whose columns form the orthonormal eigenbasis.
+
+If \code{s <- spectral(A)} and \code{V <- s$eigvectors}, then the extracted eigenspace
+\eqn{V_{id}} is some submatrix \verb{V[, _]}.
 }
 \description{
 extractEIGSPACE method for spectral objects

@@ -24,7 +24,7 @@ ctqwalk <- function(hamiltonian, ...){
     return(NULL)
   }
 
-  output <- c(list(hamiltonian=hamiltonian), spectral(hamiltonian, symmetric=TRUE, ...))
+  output <- c(list(hamiltonian=hamiltonian), spectral(hamiltonian, ...))
 
   class(output) <- c("ctqwalk", "spectral")
 

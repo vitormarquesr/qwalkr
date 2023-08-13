@@ -17,7 +17,7 @@ it takes the same value as \code{id1}.}
 \item{...}{further arguments passed to or from other methods.}
 }
 \value{
-The Schur product of the corresponding eigenprojectors.
+The Schur product of the corresponding eigenprojectors, \eqn{E_{id_1} \circ E_{id_2}}.
 }
 \description{
 extractSCHUR method for spectral objects

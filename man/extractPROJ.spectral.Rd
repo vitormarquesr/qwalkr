@@ -14,8 +14,13 @@
 \item{...}{further arguments passed to or from other methods.}
 }
 \value{
-The orthogonal projector of the desired eigenspace. Note
-that its rank is equal to the multiplicity of the eigenvalue.
+The orthogonal projector of the desired eigenspace.
+
+A Hermitian matrix \code{S} admits the spectral decomposition \eqn{S = \sum_{r}\lambda_r E_r}
+such that \eqn{E_r} is the orthogonal projector onto the \eqn{\lambda_r}-eigenspace. If \eqn{V_{id}}
+is the matrix associated to the eigenspace, then
+
+\deqn{E_{id} = V_{id}V_{id}^*}
 }
 \description{
 extractPROJ method for spectral objects
