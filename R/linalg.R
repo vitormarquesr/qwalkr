@@ -95,8 +95,7 @@ extractEIGSPACE <- function(object, ...) UseMethod("extractEIGSPACE")
 #'
 extractEIGSPACE.spectral <- function(object, id, ...){
   if (out_of_bounds(id, 1, length(object$multiplicity))){
-    warning("Index out of bounds! Check the length of the spectra.")
-    return(NULL)
+    stop("Index out of bounds! Check the length of the spectra.")
   }
 
   return (object$eigvectors[, index_eigspace(object$multiplicity, id), drop=FALSE])
@@ -144,8 +143,7 @@ extractPROJ <- function(object, ...) UseMethod("extractPROJ")
 #'
 extractPROJ.spectral <- function(object, id, ...){
   if (out_of_bounds(id, 1, length(object$multiplicity))){
-    warning("Index out of bounds! Check the length of the spectra.")
-    return(NULL)
+    stop("Index out of bounds! Check the length of the spectra.")
   }
 
   A <- extractEIGSPACE.spectral(object, id)
@@ -196,8 +194,7 @@ extractSCHUR.spectral <- function(object, id1, id2=NULL, ...){
   id2 <- if(is.null(id2)) id1 else id2
 
   if (out_of_bounds(c(id1, id2), 1, length(object$multiplicity))){
-    warning("Index out of bounds! Check the length of the spectra.")
-    return(NULL)
+    stop("Index out of bounds! Check the length of the spectra.")
   }
   E_r <- extractPROJ.spectral(object, id1)
   E_s <- extractPROJ.spectral(object, id2)

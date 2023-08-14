@@ -20,8 +20,7 @@
 #'
 ctqwalk <- function(hamiltonian, ...){
   if(!isSymmetric(hamiltonian)){
-    warning("The Hamiltonian must be a Hermitian matrix!")
-    return(NULL)
+    stop("Hamiltonian must be a Hermitian matrix!")
   }
 
   output <- c(list(hamiltonian=hamiltonian), spectral(hamiltonian, ...))
