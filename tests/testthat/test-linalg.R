@@ -18,7 +18,15 @@ test_that("extraction of projectors work", {
   I3 <- diag(3)
 
   expect_true(all(equal(sum_proj, I3)))
+
+  A_h <- spectral(matrix(c(0,1-1i,1-2i,1+1i,0,1+3i, 1+2i,1-3i,0), nrow=3), multiplicity = TRUE)
+  sum_proj_h <- extractPROJ(A_h, 1) + extractPROJ(A_h, 2) + extractPROJ(A_h, 3)
+  I3 <- diag(3)
+
+  expect_true(all(equal(sum_proj_h, I3)))
+
 })
+
 
 test_that("schur product of projectors work", {
   K3 <- spectral(matrix(c(0,1,1,1,0,1, 1, 1, 0), nrow=3), multiplicity = TRUE)

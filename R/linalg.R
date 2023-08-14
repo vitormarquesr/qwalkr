@@ -14,7 +14,7 @@
 #' @returns The spectral decomposition of `S` is returned as a list with components
 #'   \item{eigvals}{vector containing the unique eigenvalues of `S` in *decreasing* order.}
 #'   \item{multiplicity}{multiplicities of the eigenvalues in `eigvals`.}
-#'   \item{eigvectors}{a `nrow(S) x nrow(S)` matrix whose columns are eigenvectors ordered
+#'   \item{eigvectors}{a `nrow(S) x nrow(S)` unitary matrix whose columns are eigenvectors ordered
 #'   according to `eigvals`. Note that there may be more eigenvectors than eigenvalues if
 #'   `multiplicity=TRUE`, however eigenvectors of the same eigenspace are next to each other.}
 #'
@@ -149,7 +149,7 @@ extractPROJ.spectral <- function(object, id, ...){
   }
 
   A <- extractEIGSPACE.spectral(object, id)
-  return (A %*% t(A))
+  return (A %*% Conj(t(A)))
 }
 
 #' Generic S3 method extractSCHUR

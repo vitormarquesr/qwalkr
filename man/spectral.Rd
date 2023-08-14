@@ -22,7 +22,7 @@ and only its lower triangle (diagonal included) is used.}
 The spectral decomposition of \code{S} is returned as a list with components
 \item{eigvals}{vector containing the unique eigenvalues of \code{S} in \emph{decreasing} order.}
 \item{multiplicity}{multiplicities of the eigenvalues in \code{eigvals}.}
-\item{eigvectors}{a \verb{nrow(S) x nrow(S)} matrix whose columns are eigenvectors ordered
+\item{eigvectors}{a \verb{nrow(S) x nrow(S)} unitary matrix whose columns are eigenvectors ordered
 according to \code{eigvals}. Note that there may be more eigenvectors than eigenvalues if
 \code{multiplicity=TRUE}, however eigenvectors of the same eigenspace are next to each other.}
 
