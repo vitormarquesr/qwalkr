@@ -27,7 +27,8 @@
 #'   where \eqn{\Lambda =\ }`diag(rep(lam, times=s$multiplicity))`
 #'
 #' @seealso [base::eigen()], [qwalkr::extractEIGSPACE.spectral],
-#'   [qwalkr::extractPROJ.spectral], [qwalkr::extractSCHUR.spectral]
+#'   [qwalkr::extractPROJ.spectral], [qwalkr::extractSCHUR.spectral],
+#'   [qwalkr::evalMFUN.spectral]
 #'
 #' @export
 #'
@@ -201,5 +202,64 @@ extractSCHUR.spectral <- function(object, id1, id2=NULL, ...){
   return (E_r * E_s)
 }
 
+#' Apply a Function to a Matrix
+#'
+#' @param object an object containing a representation of a matrix.
+#' @param ... further arguments passed to or from other methods.
+#'
+#' @returns The resulting matrix from the application of the function.
+#' @seealso [qwalkr::evalMFUN.spectral]
+#' @export
+#'
+evalMFUN <- function(object, ...) UseMethod("evalMFUN")
 
+#' Apply a Function to a Hermitian Matrix
+#'
+#' @description Apply a function to a hermitian matrix given its
+#'   spectral decomposition.
+#'
+#' @param object an object of class `"spectral"` containing the
+#'   spectral decomposition of a matrix.
+#' @param FUN the function to be applied to the matrix.
+#' @param ... further arguments passed on to `FUN`.
+#'
+#' @returns The matrix resulting from the application of `FUN`.
+#'
+#'   A Hermitian Matrix admits the spectral decomposition
+#'   \deqn{H = \sum_k \lambda_k E_k}
+#'   where \eqn{\lambda_k} are its eigenvalues and \eqn{E_k} the
+#'   orthogonal projectors onto the \eqn{\lambda_k}-eigenspace.
+#'
+#'   If \eqn{f}=`FUN` is defined on the eigenvalues of `H` then
+#'   `evalMFUN` performs the following calculation
+#'
+#'   \deqn{f(H) = \sum_k f(\lambda_k) E_k}
+#'
+#' @seealso [qwalkr::spectral], [qwalkr::evalMFUN]
+#' @export
+#'
+#' @examples
+#' H <- matrix(c(0,1,1,1,0,1,1,1,0), nrow=3)
+#' decomp <- spectral(H)
+#'
+#' # Calculate H^2.
+#' evalMFUN(decomp, FUN = function(x) x^2)
+#'
+#' # Calculate sin(H).
+#' evalMFUN(decomp, FUN = function(x) sin(x))
+#'
+#' # Calculate H^3.
+#' evalMFUN(decomp, FUN = function(x, y) x^y, 3)
+#'
+evalMFUN.spectral <- function(object, FUN, ...){
+  FUN <- match.fun(FUN)
+
+  flam <- FUN(rep(object$eigvals, times=object$multiplicity), ...)
+
+  V <- object$eigvectors
+
+  fH <- V %*% (Conj(t(V)) * flam)
+  return (fH)
+
+}
 
