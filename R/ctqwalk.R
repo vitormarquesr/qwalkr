@@ -1,5 +1,3 @@
-
-
 #' Create a Continuous-time Quantum Walk
 #'
 #' @description `ctqwalk()` creates a quantum walk object from a hamiltonian.
