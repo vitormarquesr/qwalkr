@@ -26,7 +26,7 @@
 #'
 #'   where \eqn{\Lambda =\ }`diag(rep(lam, times=s$multiplicity))`
 #'
-#' @seealso [base::eigen()], [qwalkr::extractEIGSPACE.spectral],
+#' @seealso [base::eigen()], [qwalkr::get_eigspace.spectral],
 #'   [qwalkr::extractPROJ.spectral], [qwalkr::extractSCHUR.spectral],
 #'   [qwalkr::evalMFUN.spectral]
 #'
@@ -58,22 +58,27 @@ spectral <- function(S, multiplicity = TRUE, tol=.Machine$double.eps^0.5, ...){
   return (output)
 }
 
-#' Generic S3 method extractEIGSPACE
+#' Extract an Eigenspace of an Operator
 #'
-#' @param object an object containing the spectral decomposition of a matrix.
+#' @param object a representation of the operator.
 #' @param ... further arguments passed to or from other methods.
 #'
-#' @returns The eigenbasis of the desired eigenspace.
+#' @returns A representation of the requested eigenspace.
 #' @seealso [qwalkr::extractPROJ], [qwalkr::extractSCHUR],
-#'   [qwalkr::extractEIGSPACE.spectral]
+#'   [qwalkr::get_eigspace.spectral]
 #' @export
 #'
-extractEIGSPACE <- function(object, ...) UseMethod("extractEIGSPACE")
-
-
-#' extractEIGSPACE method for spectral objects
 #'
-#' @param object an object of class spectral.
+get_eigspace <- function(object, ...) UseMethod("get_eigspace")
+
+
+#' Extract an Eigenspace of a Hermitian Matrix.
+#'
+#' @description
+#' Get the eigenbasis associated with an eigenvalue based on the representation
+#' of a Hermitian Matrix given by class `spectral`.
+#'
+#' @param object an instance of class `spectral`.
 #' @param id index for the desired eigenspace according to the ordered (decreasing) spectra.
 #' @param ... further arguments passed to or from other methods.
 #' @returns A matrix whose columns form the orthonormal eigenbasis.
@@ -82,19 +87,19 @@ extractEIGSPACE <- function(object, ...) UseMethod("extractEIGSPACE")
 #'   \eqn{V_{id}} is some submatrix `V[, _]`.
 #'
 #' @export
-#' @seealso [qwalkr::spectral], [qwalkr::extractEIGSPACE]
+#' @seealso [qwalkr::spectral], [qwalkr::get_eigspace]
 #'
 #' @examples
 #' # Spectra is {2, -1} with multiplicities one and two respectively.
 #' decomp <- spectral(matrix(c(0,1,1,1,0,1,1,1,0), nrow=3))
 #'
 #' # Returns the two orthonormal eigenvectors corresponding to the eigenvalue -1.
-#' extractEIGSPACE(decomp, id=2)
+#' get_eigspace(decomp, id=2)
 #'
 #' # Returns the eigenvector corresponding to the eigenvalue 2.
-#' extractEIGSPACE(decomp, id=1)
+#' get_eigspace(decomp, id=1)
 #'
-extractEIGSPACE.spectral <- function(object, id, ...){
+get_eigspace.spectral <- function(object, id, ...){
   if (out_of_bounds(id, 1, length(object$multiplicity))){
     stop("Index out of bounds! Check the length of the spectra.")
   }
@@ -108,7 +113,7 @@ extractEIGSPACE.spectral <- function(object, id, ...){
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns The orthogonal projector of the desired eigenspace.
-#' @seealso [qwalkr::extractEIGSPACE], [qwalkr::extractSCHUR],
+#' @seealso [qwalkr::get_eigspace], [qwalkr::extractSCHUR],
 #'    [qwalkr::extractPROJ.spectral]
 #' @export
 #'
@@ -147,7 +152,7 @@ extractPROJ.spectral <- function(object, id, ...){
     stop("Index out of bounds! Check the length of the spectra.")
   }
 
-  A <- extractEIGSPACE.spectral(object, id)
+  A <- get_eigspace.spectral(object, id)
   return (A %*% Conj(t(A)))
 }
 
@@ -157,7 +162,7 @@ extractPROJ.spectral <- function(object, id, ...){
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns The Schur product of eigenprojectors.
-#' @seealso [qwalkr::extractEIGSPACE], [qwalkr::extractSCHUR],
+#' @seealso [qwalkr::get_eigspace], [qwalkr::extractSCHUR],
 #'    [qwalkr::extractSCHUR.spectral]
 #' @export
 #'

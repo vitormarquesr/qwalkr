@@ -18,6 +18,6 @@ The orthogonal projector of the desired eigenspace.
 Generic S3 method extractPROJ
 }
 \seealso{
-\link{extractEIGSPACE}, \link{extractSCHUR},
+\link{get_eigspace}, \link{extractSCHUR},
 \link{extractPROJ.spectral}
 }
