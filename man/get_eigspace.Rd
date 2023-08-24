@@ -18,6 +18,6 @@ A representation of the requested eigenspace.
 Extract an Eigenspace from an Operator
 }
 \seealso{
-\link{get_eigproj}, \link{extractSCHUR},
+\link{get_eigproj}, \link{get_eigschur},
 \link{get_eigspace.spectral}
 }

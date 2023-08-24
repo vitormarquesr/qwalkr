@@ -18,6 +18,6 @@ A representation of the requested eigen-projector.
 Extract an Eigen-Projector from an operator
 }
 \seealso{
-\link{get_eigspace}, \link{extractSCHUR},
+\link{get_eigspace}, \link{get_eigschur},
 \link{get_eigproj.spectral}
 }

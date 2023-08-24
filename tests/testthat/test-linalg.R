@@ -29,7 +29,7 @@ test_that("extraction of projectors work", {
 
 test_that("schur product of projectors work", {
   K3 <- spectral(matrix(c(0,1,1,1,0,1, 1, 1, 0), nrow=3), multiplicity = TRUE)
-  E1_squared <- extractSCHUR(K3, id1=1)
+  E1_squared <- get_eigschur(K3, id1=1)
 
   expect_true(all(equal(E1_squared, 1/9)))
 })

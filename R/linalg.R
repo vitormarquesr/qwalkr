@@ -27,7 +27,7 @@
 #'   where \eqn{\Lambda =\ }`diag(rep(lam, times=s$multiplicity))`
 #'
 #' @seealso [base::eigen()], [qwalkr::get_eigspace.spectral],
-#'   [qwalkr::get_eigproj.spectral], [qwalkr::extractSCHUR.spectral],
+#'   [qwalkr::get_eigproj.spectral], [qwalkr::get_eigschur.spectral],
 #'   [qwalkr::evalMFUN.spectral]
 #'
 #' @export
@@ -64,7 +64,7 @@ spectral <- function(S, multiplicity = TRUE, tol=.Machine$double.eps^0.5, ...){
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns A representation of the requested eigenspace.
-#' @seealso [qwalkr::get_eigproj], [qwalkr::extractSCHUR],
+#' @seealso [qwalkr::get_eigproj], [qwalkr::get_eigschur],
 #'   [qwalkr::get_eigspace.spectral]
 #' @export
 #'
@@ -113,7 +113,7 @@ get_eigspace.spectral <- function(object, id, ...){
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns A representation of the requested eigen-projector.
-#' @seealso [qwalkr::get_eigspace], [qwalkr::extractSCHUR],
+#' @seealso [qwalkr::get_eigspace], [qwalkr::get_eigschur],
 #'    [qwalkr::get_eigproj.spectral]
 #' @export
 #'
@@ -160,21 +160,25 @@ get_eigproj.spectral <- function(object, id, ...){
   return (A %*% Conj(t(A)))
 }
 
-#' Generic S3 method extractSCHUR
+#' Extract a Schur Cross-Product from an Operator
 #'
-#' @param object an object containing the spectral decomposition of a matrix.
+#' @param object a representation of the operator.
 #' @param ... further arguments passed to or from other methods.
 #'
-#' @returns The Schur product of eigenprojectors.
+#' @returns A representation of the requested Schur cross-product.
 #' @seealso [qwalkr::get_eigspace], [qwalkr::get_eigproj],
-#'    [qwalkr::extractSCHUR.spectral]
+#'    [qwalkr::get_eigschur.spectral]
 #' @export
 #'
-extractSCHUR <- function(object, ...) UseMethod("extractSCHUR")
+get_eigschur <- function(object, ...) UseMethod("get_eigschur")
 
-#' extractSCHUR method for spectral objects
+#' Extract a Schur Cross-Product from a Hermitian Matrix
 #'
-#' @param object an object of class spectral.
+#' @description
+#' Get the Schur product between eigen-projectors based  on the representation of a
+#' Hermitian Matrix given by class `spectral`.
+#'
+#' @param object an instance of class `spectral`.
 #' @param id1 index for the first eigenspace according to the ordered (decreasing) spectra.
 #' @param id2 index for the second eigenspace according to the ordered (decreasing) spectra. If not provided,
 #'    it takes the same value as `id1`.
@@ -182,7 +186,7 @@ extractSCHUR <- function(object, ...) UseMethod("extractSCHUR")
 #'
 #' @returns The Schur product of the corresponding eigenprojectors, \eqn{E_{id_1} \circ E_{id_2}}.
 #'
-#' @seealso [qwalkr::spectral], [qwalkr::extractSCHUR]
+#' @seealso [qwalkr::spectral], [qwalkr::get_eigschur]
 #'
 #' @export
 #'
@@ -191,15 +195,15 @@ extractSCHUR <- function(object, ...) UseMethod("extractSCHUR")
 #' decomp <- spectral(matrix(c(0,1,1,1,0,1,1,1,0), nrow=3))
 #'
 #' # Returns the Schur product between the 2-projector and -1-projector.
-#' extractSCHUR(decomp, id1=2, id2=1)
+#' get_eigschur(decomp, id1=2, id2=1)
 #'
 #' # Returns the Schur square of the 2-projector.
-#' extractSCHUR(decomp, id1=1, id2=1)
+#' get_eigschur(decomp, id1=1, id2=1)
 #'
 #' # Also returns the Schur square of the 2-projector
-#' extractSCHUR(decomp, id1=1)
+#' get_eigschur(decomp, id1=1)
 #'
-extractSCHUR.spectral <- function(object, id1, id2=NULL, ...){
+get_eigschur.spectral <- function(object, id1, id2=NULL, ...){
 
   id2 <- if(is.null(id2)) id1 else id2
 
