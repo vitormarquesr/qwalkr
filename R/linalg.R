@@ -28,7 +28,7 @@
 #'
 #' @seealso [base::eigen()], [qwalkr::get_eigspace.spectral],
 #'   [qwalkr::get_eigproj.spectral], [qwalkr::get_eigschur.spectral],
-#'   [qwalkr::evalMFUN.spectral]
+#'   [qwalkr::act_eigfun.spectral]
 #'
 #' @export
 #'
@@ -215,24 +215,23 @@ get_eigschur.spectral <- function(object, id1, id2=NULL, ...){
   return (E_r * E_s)
 }
 
-#' Apply a Function to a Matrix
+#' Apply a Function to an Operator
 #'
-#' @param object an object containing a representation of a matrix.
+#' @param object a representation of the operator.
 #' @param ... further arguments passed to or from other methods.
 #'
-#' @returns The resulting matrix from the application of the function.
-#' @seealso [qwalkr::evalMFUN.spectral]
+#' @returns The resulting operator from the application of the function.
+#' @seealso [qwalkr::act_eigfun.spectral]
 #' @export
 #'
-evalMFUN <- function(object, ...) UseMethod("evalMFUN")
+act_eigfun <- function(object, ...) UseMethod("act_eigfun")
 
 #' Apply a Function to a Hermitian Matrix
 #'
-#' @description Apply a function to a hermitian matrix given its
-#'   spectral decomposition.
+#' @description Apply a function to a Hermitian matrix based on the representation
+#' given by class `spectral`.
 #'
-#' @param object an object of class `"spectral"` containing the
-#'   spectral decomposition of a matrix.
+#' @param object an instance of class `spectral`.
 #' @param FUN the function to be applied to the matrix.
 #' @param ... further arguments passed on to `FUN`.
 #'
@@ -241,14 +240,14 @@ evalMFUN <- function(object, ...) UseMethod("evalMFUN")
 #'   A Hermitian Matrix admits the spectral decomposition
 #'   \deqn{H = \sum_k \lambda_k E_k}
 #'   where \eqn{\lambda_k} are its eigenvalues and \eqn{E_k} the
-#'   orthogonal projectors onto the \eqn{\lambda_k}-eigenspace.
+#'   orthogonal projector onto the \eqn{\lambda_k}-eigenspace.
 #'
-#'   If \eqn{f}=`FUN` is defined on the eigenvalues of `H` then
-#'   `evalMFUN` performs the following calculation
+#'   If \eqn{f}=`FUN` is defined on the eigenvalues of `H`, then
+#'   `act_eigfun` performs the following calculation
 #'
 #'   \deqn{f(H) = \sum_k f(\lambda_k) E_k}
 #'
-#' @seealso [qwalkr::spectral], [qwalkr::evalMFUN]
+#' @seealso [qwalkr::spectral], [qwalkr::act_eigfun]
 #' @export
 #'
 #' @examples
@@ -256,15 +255,15 @@ evalMFUN <- function(object, ...) UseMethod("evalMFUN")
 #' decomp <- spectral(H)
 #'
 #' # Calculate H^2.
-#' evalMFUN(decomp, FUN = function(x) x^2)
+#' act_eigfun(decomp, FUN = function(x) x^2)
 #'
 #' # Calculate sin(H).
-#' evalMFUN(decomp, FUN = function(x) sin(x))
+#' act_eigfun(decomp, FUN = function(x) sin(x))
 #'
 #' # Calculate H^3.
-#' evalMFUN(decomp, FUN = function(x, y) x^y, 3)
+#' act_eigfun(decomp, FUN = function(x, y) x^y, 3)
 #'
-evalMFUN.spectral <- function(object, FUN, ...){
+act_eigfun.spectral <- function(object, FUN, ...){
   FUN <- match.fun(FUN)
 
   flam <- FUN(rep(object$eigvals, times=object$multiplicity), ...)

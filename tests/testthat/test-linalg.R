@@ -38,12 +38,12 @@ test_that("matrix functions work", {
   H <- matrix(c(0,1,1,1,0,1,1,1,0), nrow=3)
   decomp <- spectral(H)
 
-  expect_equal(evalMFUN(decomp, FUN = function(x) x^3), H %*% H %*% H)
-  expect_equal(evalMFUN(decomp, FUN = function(x) 1/x), solve(H))
+  expect_equal(act_eigfun(decomp, FUN = function(x) x^3), H %*% H %*% H)
+  expect_equal(act_eigfun(decomp, FUN = function(x) 1/x), solve(H))
 
   H_cmplx <- matrix(c(0,1+3i,1-2i,1-3i,0,3,1+2i,3,5), nrow=3)
   decomp_cmplx <- spectral(H_cmplx)
-  expect_equal(evalMFUN(decomp_cmplx, function(x,y) x^y, 2), H_cmplx %*% H_cmplx)
+  expect_equal(act_eigfun(decomp_cmplx, function(x,y) x^y, 2), H_cmplx %*% H_cmplx)
 
 })
 
