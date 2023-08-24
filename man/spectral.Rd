@@ -49,7 +49,7 @@ spectral(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3), multiplicity = FALSE)
 
 }
 \seealso{
-\code{\link[base:eigen]{base::eigen()}}, \link{extractEIGSPACE.spectral},
-\link{extractPROJ.spectral}, \link{extractSCHUR.spectral},
-\link{evalMFUN.spectral}
+\code{\link[base:eigen]{base::eigen()}}, \link{get_eigspace.spectral},
+\link{get_eigproj.spectral}, \link{get_eigschur.spectral},
+\link{act_eigfun.spectral}
 }
