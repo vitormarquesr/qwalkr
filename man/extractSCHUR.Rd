@@ -18,6 +18,6 @@ The Schur product of eigenprojectors.
 Generic S3 method extractSCHUR
 }
 \seealso{
-\link{get_eigspace}, \link{extractSCHUR},
+\link{get_eigspace}, \link{get_eigproj},
 \link{extractSCHUR.spectral}
 }

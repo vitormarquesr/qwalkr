@@ -27,7 +27,7 @@
 #'   where \eqn{\Lambda =\ }`diag(rep(lam, times=s$multiplicity))`
 #'
 #' @seealso [base::eigen()], [qwalkr::get_eigspace.spectral],
-#'   [qwalkr::extractPROJ.spectral], [qwalkr::extractSCHUR.spectral],
+#'   [qwalkr::get_eigproj.spectral], [qwalkr::extractSCHUR.spectral],
 #'   [qwalkr::evalMFUN.spectral]
 #'
 #' @export
@@ -58,13 +58,13 @@ spectral <- function(S, multiplicity = TRUE, tol=.Machine$double.eps^0.5, ...){
   return (output)
 }
 
-#' Extract an Eigenspace of an Operator
+#' Extract an Eigenspace from an Operator
 #'
 #' @param object a representation of the operator.
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns A representation of the requested eigenspace.
-#' @seealso [qwalkr::extractPROJ], [qwalkr::extractSCHUR],
+#' @seealso [qwalkr::get_eigproj], [qwalkr::extractSCHUR],
 #'   [qwalkr::get_eigspace.spectral]
 #' @export
 #'
@@ -72,7 +72,7 @@ spectral <- function(S, multiplicity = TRUE, tol=.Machine$double.eps^0.5, ...){
 get_eigspace <- function(object, ...) UseMethod("get_eigspace")
 
 
-#' Extract an Eigenspace of a Hermitian Matrix.
+#' Extract an Eigenspace from a Hermitian Matrix
 #'
 #' @description
 #' Get the eigenbasis associated with an eigenvalue based on the representation
@@ -107,21 +107,25 @@ get_eigspace.spectral <- function(object, id, ...){
   return (object$eigvectors[, index_eigspace(object$multiplicity, id), drop=FALSE])
 }
 
-#' Generic S3 method extractPROJ
+#' Extract an Eigen-Projector from an operator
 #'
-#' @param object an object containing the spectral decomposition of a matrix.
+#' @param object a representation of the operator.
 #' @param ... further arguments passed to or from other methods.
 #'
-#' @returns The orthogonal projector of the desired eigenspace.
+#' @returns A representation of the requested eigen-projector.
 #' @seealso [qwalkr::get_eigspace], [qwalkr::extractSCHUR],
-#'    [qwalkr::extractPROJ.spectral]
+#'    [qwalkr::get_eigproj.spectral]
 #' @export
 #'
-extractPROJ <- function(object, ...) UseMethod("extractPROJ")
+get_eigproj <- function(object, ...) UseMethod("get_eigproj")
 
-#' extractPROJ method for spectral objects
+#' Extract an Eigen-Projector from a Hermitian Matrix
 #'
-#' @param object an object of class spectral.
+#' @description
+#' Get the orthogonal projector associated with an eigenspace based on the representation
+#' of a Hermitian Matrix given by class `spectral`.
+#'
+#' @param object an instance of class `spectral`.
 #' @param id index for the desired eigenspace according to the ordered (decreasing) spectra.
 #' @param ... further arguments passed to or from other methods.
 #'
@@ -133,7 +137,7 @@ extractPROJ <- function(object, ...) UseMethod("extractPROJ")
 #'
 #'   \deqn{E_{id} = V_{id}V_{id}^*}
 #'
-#' @seealso [qwalkr::spectral], [qwalkr::extractPROJ]
+#' @seealso [qwalkr::spectral], [qwalkr::get_eigproj]
 #'
 #' @export
 #'
@@ -142,12 +146,12 @@ extractPROJ <- function(object, ...) UseMethod("extractPROJ")
 #' decomp <- spectral(matrix(c(0,1,1,1,0,1,1,1,0), nrow=3))
 #'
 #' # Returns the projector associated to the eigenvalue -1.
-#' extractPROJ(decomp, id=2)
+#' get_eigproj(decomp, id=2)
 #'
 #' # Returns the projector associated to the eigenvalue 2.
-#' extractPROJ(decomp, id=1)
+#' get_eigproj(decomp, id=1)
 #'
-extractPROJ.spectral <- function(object, id, ...){
+get_eigproj.spectral <- function(object, id, ...){
   if (out_of_bounds(id, 1, length(object$multiplicity))){
     stop("Index out of bounds! Check the length of the spectra.")
   }
@@ -162,7 +166,7 @@ extractPROJ.spectral <- function(object, id, ...){
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns The Schur product of eigenprojectors.
-#' @seealso [qwalkr::get_eigspace], [qwalkr::extractSCHUR],
+#' @seealso [qwalkr::get_eigspace], [qwalkr::get_eigproj],
 #'    [qwalkr::extractSCHUR.spectral]
 #' @export
 #'
@@ -202,8 +206,8 @@ extractSCHUR.spectral <- function(object, id1, id2=NULL, ...){
   if (out_of_bounds(c(id1, id2), 1, length(object$multiplicity))){
     stop("Index out of bounds! Check the length of the spectra.")
   }
-  E_r <- extractPROJ.spectral(object, id1)
-  E_s <- extractPROJ.spectral(object, id2)
+  E_r <- get_eigproj.spectral(object, id1)
+  E_s <- get_eigproj.spectral(object, id2)
   return (E_r * E_s)
 }
 

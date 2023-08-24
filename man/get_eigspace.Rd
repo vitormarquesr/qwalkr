@@ -2,7 +2,7 @@
 % Please edit documentation in R/linalg.R
 \name{get_eigspace}
 \alias{get_eigspace}
-\title{Extract an Eigenspace of an Operator}
+\title{Extract an Eigenspace from an Operator}
 \usage{
 get_eigspace(object, ...)
 }
@@ -15,9 +15,9 @@ get_eigspace(object, ...)
 A representation of the requested eigenspace.
 }
 \description{
-Extract an Eigenspace of an Operator
+Extract an Eigenspace from an Operator
 }
 \seealso{
-\link{extractPROJ}, \link{extractSCHUR},
+\link{get_eigproj}, \link{extractSCHUR},
 \link{get_eigspace.spectral}
 }

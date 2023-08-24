@@ -2,7 +2,7 @@
 % Please edit documentation in R/linalg.R
 \name{get_eigspace.spectral}
 \alias{get_eigspace.spectral}
-\title{Extract an Eigenspace of a Hermitian Matrix.}
+\title{Extract an Eigenspace from a Hermitian Matrix}
 \usage{
 \method{get_eigspace}{spectral}(object, id, ...)
 }
