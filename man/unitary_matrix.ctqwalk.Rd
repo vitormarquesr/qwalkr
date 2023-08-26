@@ -21,18 +21,18 @@ If \eqn{|\psi(t) \rangle} is the quantum state of the system at time \eqn{t}, an
 \eqn{H} the Hamiltonian operator, then the evolution is governed by
 the Schrodinger equation
 
-\deqn{H|\psi(t) \rangle = i \frac{\partial}{\partial t}|\psi(t) \rangle}
+\deqn{\frac{\partial}{\partial t}|\psi(t) \rangle = iH|\psi(t) \rangle}
 
 and if \eqn{H} is time-independent its solution is given by
 
-\deqn{|\psi(t) \rangle = U(t)|\psi(0) \rangle = e^{-iHt}|\psi(0) \rangle}
+\deqn{|\psi(t) \rangle = U(t)|\psi(0) \rangle = e^{iHt}|\psi(0) \rangle}
 
 The evolution operator is the result of the complex matrix exponential
 and it can be calculated as
 
-\deqn{U(t) = e^{-iHt} = \sum_r e^{-i t \lambda_r}E_r}
+\deqn{U(t) = e^{iHt} = \sum_r e^{i t \lambda_r}E_r}
 
-if \eqn{H = \sum_r \lambda_r E_r}.
+in which \eqn{H = \sum_r \lambda_r E_r}.
 
 \code{unitary_matrix} returns the result of the above calculation for a
 provided \code{t}.
