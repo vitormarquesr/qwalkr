@@ -25,5 +25,6 @@ ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
 
 }
 \seealso{
-\code{\link[=spectral]{spectral()}}, \link{unitary_matrix.ctqwalk}
+\code{\link[=spectral]{spectral()}}, \link{unitary_matrix.ctqwalk},
+\link{mixing_matrix.ctqwalk}
 }

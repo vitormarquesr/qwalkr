@@ -7,7 +7,7 @@
 #' @returns The unitary time evolution operator.
 #' @export
 #'
-#' @seealso [qwalkr::unitary_matrix.ctqwalk]
+#' @seealso [qwalkr::mixing_matrix], [qwalkr::unitary_matrix.ctqwalk]
 #'
 unitary_matrix <- function(object, ...) UseMethod("unitary_matrix")
 
@@ -51,11 +51,58 @@ unitary_matrix <- function(object, ...) UseMethod("unitary_matrix")
 #' unitary_matrix(walk, t = 2*pi)
 #'
 unitary_matrix.ctqwalk <- function(object, t, ...){
-  U <- act_eigfun(object, function(x) exp(1i*x*t))
-  return (U)
+  Ut <- act_eigfun(object, function(x) exp(1i*x*t))
+  return (Ut)
 }
 
+#' Get the Mixing Matrix of a Quantum Walk
+#'
+#' @param object a representation of the quantum walk.
+#' @param ... further arguments passed to or from other methods.
+#'
+#' @returns The mixing matrix of the quantum walk.
+#' @seealso [qwalkr::unitary_matrix], [qwalkr::mixing_matrix.ctqwalk]
+#' @export
+#'
+mixing_matrix <- function(object, ...) UseMethod("mixing_matrix")
 
+
+#' Get the Mixing Matrix of a Continuous-Time Quantum Walk
+#'
+#' @param object an instance of class `ctqwalk`.
+#' @param t it will be returned the mixing matrix at time `t`.
+#' @param ... further arguments passed to or from other methods.
+#'
+#' @returns The mixing matrix of the continuous-time quantum walk.
+#'
+#'    Let \eqn{U(t)} be the time evolution operator of the
+#'    quantum walk at time \eqn{t}, then the mixing matrix is given by
+#'
+#'    \deqn{M(t) = U(t) \circ \overline{U(t)}}
+#'
+#'    \eqn{M(t)} is a doubly stochastic real symmetric matrix, which encodes the
+#'    probability density of the quantum system at time \eqn{t}.
+#'
+#'    More precisely, the \eqn{(M(t))_{ab}} entry gives us the probability
+#'    of measuring the standard basis state \eqn{|b \rangle} at time \eqn{t}, given that
+#'    the quantum walk started at \eqn{|a \rangle}.
+#'
+#'    `mixing_matrix` returns the result of the above calculations for a
+#'    provided `t`.
+#'
+#' @export
+#' @seealso [qwalkr::ctqwalk], [qwalkr::mixing_matrix]
+#'
+#' @examples
+#' walk <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
+#'
+#' # Returns the mixing matrix at time t = 2*pi, M(2pi)
+#' mixing_matrix(walk, t = 2*pi)
+#'
+mixing_matrix.ctqwalk <- function(object, t, ...){
+  Mt <- Mod(unitary_matrix(object, t))^2
+  return (Mt)
+}
 
 
 

@@ -18,5 +18,5 @@ The unitary time evolution operator.
 Get the Unitary Time Evolution Operator of a Quantum Walk
 }
 \seealso{
-\link{unitary_matrix.ctqwalk}
+\link{mixing_matrix}, \link{unitary_matrix.ctqwalk}
 }
