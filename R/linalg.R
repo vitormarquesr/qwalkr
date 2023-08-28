@@ -254,13 +254,13 @@ act_eigfun <- function(object, ...) UseMethod("act_eigfun")
 #' H <- matrix(c(0,1,1,1,0,1,1,1,0), nrow=3)
 #' decomp <- spectral(H)
 #'
-#' # Calculate H^2.
+#' # Calculates H^2.
 #' act_eigfun(decomp, FUN = function(x) x^2)
 #'
-#' # Calculate sin(H).
+#' # Calculates sin(H).
 #' act_eigfun(decomp, FUN = function(x) sin(x))
 #'
-#' # Calculate H^3.
+#' # Calculates H^3.
 #' act_eigfun(decomp, FUN = function(x, y) x^y, 3)
 #'
 act_eigfun.spectral <- function(object, FUN, ...){
