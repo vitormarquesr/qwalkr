@@ -18,5 +18,5 @@ The mixing matrix of the quantum walk.
 Get the Mixing Matrix of a Quantum Walk
 }
 \seealso{
-\link{unitary_matrix}, \link{mixing_matrix.ctqwalk}
+\link{unitary_matrix}, \link{avg_matrix}, \link{mixing_matrix.ctqwalk}
 }

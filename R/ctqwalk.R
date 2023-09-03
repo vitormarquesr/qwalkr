@@ -9,7 +9,7 @@
 #'   decomposition (See [qwalkr::spectral()] for further details)
 #'
 #' @seealso [qwalkr::spectral()], [qwalkr::unitary_matrix.ctqwalk],
-#' [qwalkr::mixing_matrix.ctqwalk]
+#' [qwalkr::mixing_matrix.ctqwalk], [qwalkr::avg_matrix.ctqwalk]
 #' @export
 #'
 #' @examples
