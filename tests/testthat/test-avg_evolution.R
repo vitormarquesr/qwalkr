@@ -18,3 +18,20 @@ test_that("standard average mixing matrix works", {
   expect_true(all(equal(M, M_exp)))
 
 })
+
+test_that("generalized average mixing matrix works", {
+  walk_K3 <- ctqwalk(matrix(c(0,1,1,1,0,1,1,1,0), nrow=3))
+
+  expect_equal(gavg_matrix(walk_K3, c(2*pi/9)), matrix(1/3, nrow=3, ncol=3))
+
+  walk_P3 <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
+
+  theta1 <- acos(-1/3)/(2*sqrt(2))
+  theta2 <- pi/sqrt(2) - theta1
+
+  expect_equal(gavg_matrix(walk_P3, c(theta1, theta2)), matrix(1/3, nrow=3, ncol=3))
+
+})
+
+
+
