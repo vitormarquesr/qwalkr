@@ -62,7 +62,8 @@ unitary_matrix.ctqwalk <- function(object, t, ...){
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns The mixing matrix of the quantum walk.
-#' @seealso [qwalkr::unitary_matrix], [qwalkr::avg_matrix], [qwalkr::mixing_matrix.ctqwalk]
+#' @seealso [qwalkr::unitary_matrix], [qwalkr::avg_matrix], [qwalkr::gavg_matrix],
+#' [qwalkr::mixing_matrix.ctqwalk]
 #' @export
 #'
 mixing_matrix <- function(object, ...) UseMethod("mixing_matrix")

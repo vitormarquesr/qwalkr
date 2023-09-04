@@ -18,5 +18,5 @@ The average mixing matrix.
 Get the Average Mixing Matrix of a Quantum Walk
 }
 \seealso{
-\link{mixing_matrix}, \link{avg_matrix.ctqwalk}
+\link{mixing_matrix}, \link{gavg_matrix}, \link{avg_matrix.ctqwalk}
 }
