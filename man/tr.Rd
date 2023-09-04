@@ -14,7 +14,7 @@ If \eqn{A} has order \eqn{n},
 then \eqn{tr(A) = \sum_{i=1}^{n}a_{ii}}.
 }
 \description{
-The Trace of a Matrix
+Computes the trace of a matrix \code{A}.
 }
 \examples{
 A <- rbind(1:5, 2:6, 3:7)

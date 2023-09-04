@@ -16,7 +16,7 @@ defined as
 \deqn{\langle A, B \rangle := tr(A^*B)}
 }
 \description{
-The Trace Inner Product of Matrices
+Computes the trace inner product of two matrices \code{A} and \code{B}.
 }
 \examples{
 A <- rbind(1:5, 2:6, 3:7)

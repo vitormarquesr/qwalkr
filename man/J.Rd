@@ -15,7 +15,7 @@ equal to 1. The all-ones matrix is given by
 \eqn{J_{n\ x\ n} = 1_{n\ x\ 1}1_{n\ x\ 1}^T}.
 }
 \description{
-The All-Ones Matrix
+Returns the all-ones matrix of order \code{n}.
 }
 \examples{
 # Return the all-ones matrix of order 5.
