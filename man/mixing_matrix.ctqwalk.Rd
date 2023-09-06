@@ -42,5 +42,5 @@ mixing_matrix(walk, t = 2*pi)
 
 }
 \seealso{
-\link{ctqwalk}, \link{mixing_matrix}
+\code{\link[=ctqwalk]{ctqwalk()}}, \code{\link[=mixing_matrix]{mixing_matrix()}}
 }

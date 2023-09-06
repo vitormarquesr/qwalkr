@@ -6,7 +6,7 @@
 #' @returns The average mixing matrix.
 #' @export
 #'
-#' @seealso [qwalkr::mixing_matrix], [qwalkr::gavg_matrix], [qwalkr::avg_matrix.ctqwalk]
+#' @seealso [qwalkr::mixing_matrix()], [qwalkr::gavg_matrix()], [qwalkr::avg_matrix.ctqwalk()]
 avg_matrix <- function(object, ...) UseMethod("avg_matrix")
 
 
@@ -32,7 +32,7 @@ avg_matrix <- function(object, ...) UseMethod("avg_matrix")
 #'
 #' @export
 #'
-#' @seealso [qwalkr::ctqwalk], [qwalkr::avg_matrix]
+#' @seealso [qwalkr::ctqwalk()], [qwalkr::avg_matrix()]
 #' @examples
 #' walk <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
 #'
@@ -56,7 +56,7 @@ avg_matrix.ctqwalk <- function(object, ...){
 #' @returns The generalized average mixing matrix.
 #' @export
 #'
-#' @seealso [qwalkr::mixing_matrix], [qwalkr::avg_matrix], [qwalkr::gavg_matrix.ctqwalk]
+#' @seealso [qwalkr::mixing_matrix()], [qwalkr::avg_matrix()], [qwalkr::gavg_matrix.ctqwalk()]
 gavg_matrix <- function(object, ...) UseMethod("gavg_matrix")
 
 
@@ -78,7 +78,7 @@ gavg_matrix <- function(object, ...) UseMethod("gavg_matrix")
 #'
 #' @export
 #'
-#' @seealso [qwalkr::ctqwalk], [qwalkr::gavg_matrix]
+#' @seealso [qwalkr::ctqwalk()], [qwalkr::gavg_matrix()]
 #' @examples
 #' walk <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
 #'

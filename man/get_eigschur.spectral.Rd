@@ -38,5 +38,5 @@ get_eigschur(decomp, id1=1)
 
 }
 \seealso{
-\link{spectral}, \link{get_eigschur}
+\code{\link[=spectral]{spectral()}}, \code{\link[=get_eigschur]{get_eigschur()}}
 }

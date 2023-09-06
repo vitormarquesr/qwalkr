@@ -38,5 +38,5 @@ get_eigproj(decomp, id=1)
 
 }
 \seealso{
-\link{spectral}, \link{get_eigproj}
+\code{\link[=spectral]{spectral()}}, \code{\link[=get_eigproj]{get_eigproj()}}
 }

@@ -18,5 +18,5 @@ The generalized average mixing matrix.
 Get the Generalized Average Mixing Matrix of a Quantum Walk
 }
 \seealso{
-\link{mixing_matrix}, \link{avg_matrix}, \link{gavg_matrix.ctqwalk}
+\code{\link[=mixing_matrix]{mixing_matrix()}}, \code{\link[=avg_matrix]{avg_matrix()}}, \code{\link[=gavg_matrix.ctqwalk]{gavg_matrix.ctqwalk()}}
 }

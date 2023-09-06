@@ -48,6 +48,6 @@ unitary_matrix(walk, t = 2*pi)
 
 }
 \seealso{
-\link{ctqwalk}, \link{unitary_matrix},
-\link{act_eigfun}
+\code{\link[=ctqwalk]{ctqwalk()}}, \code{\link[=unitary_matrix]{unitary_matrix()}},
+\code{\link[=act_eigfun]{act_eigfun()}}
 }

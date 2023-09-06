@@ -34,5 +34,5 @@ walk <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
 gavg_matrix(walk, rnorm(1000))
 }
 \seealso{
-\link{ctqwalk}, \link{gavg_matrix}
+\code{\link[=ctqwalk]{ctqwalk()}}, \code{\link[=gavg_matrix]{gavg_matrix()}}
 }

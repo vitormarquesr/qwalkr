@@ -7,7 +7,7 @@
 #' @returns The unitary time evolution operator.
 #' @export
 #'
-#' @seealso [qwalkr::mixing_matrix], [qwalkr::unitary_matrix.ctqwalk]
+#' @seealso [qwalkr::mixing_matrix()], [qwalkr::unitary_matrix.ctqwalk()]
 #'
 unitary_matrix <- function(object, ...) UseMethod("unitary_matrix")
 
@@ -42,8 +42,8 @@ unitary_matrix <- function(object, ...) UseMethod("unitary_matrix")
 #'    provided `t`.
 #'
 #' @export
-#' @seealso [qwalkr::ctqwalk], [qwalkr::unitary_matrix],
-#' [qwalkr::act_eigfun]
+#' @seealso [qwalkr::ctqwalk()], [qwalkr::unitary_matrix()],
+#' [qwalkr::act_eigfun()]
 #'
 #' @examples
 #' walk <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
@@ -62,8 +62,8 @@ unitary_matrix.ctqwalk <- function(object, t, ...){
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns The mixing matrix of the quantum walk.
-#' @seealso [qwalkr::unitary_matrix], [qwalkr::avg_matrix], [qwalkr::gavg_matrix],
-#' [qwalkr::mixing_matrix.ctqwalk]
+#' @seealso [qwalkr::unitary_matrix()], [qwalkr::avg_matrix()], [qwalkr::gavg_matrix()],
+#' [qwalkr::mixing_matrix.ctqwalk()]
 #' @export
 #'
 mixing_matrix <- function(object, ...) UseMethod("mixing_matrix")
@@ -93,7 +93,7 @@ mixing_matrix <- function(object, ...) UseMethod("mixing_matrix")
 #'    provided `t`.
 #'
 #' @export
-#' @seealso [qwalkr::ctqwalk], [qwalkr::mixing_matrix]
+#' @seealso [qwalkr::ctqwalk()], [qwalkr::mixing_matrix()]
 #'
 #' @examples
 #' walk <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))

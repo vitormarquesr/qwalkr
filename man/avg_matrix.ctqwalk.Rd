@@ -37,5 +37,5 @@ walk <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
 avg_matrix(walk)
 }
 \seealso{
-\link{ctqwalk}, \link{avg_matrix}
+\code{\link[=ctqwalk]{ctqwalk()}}, \code{\link[=avg_matrix]{avg_matrix()}}
 }

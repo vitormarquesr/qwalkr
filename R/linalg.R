@@ -26,9 +26,9 @@
 #'
 #'   where \eqn{\Lambda =\ }`diag(rep(lam, times=s$multiplicity))`
 #'
-#' @seealso [base::eigen()], [qwalkr::get_eigspace.spectral],
-#'   [qwalkr::get_eigproj.spectral], [qwalkr::get_eigschur.spectral],
-#'   [qwalkr::act_eigfun.spectral]
+#' @seealso [base::eigen()], [qwalkr::get_eigspace.spectral()],
+#'   [qwalkr::get_eigproj.spectral()], [qwalkr::get_eigschur.spectral()],
+#'   [qwalkr::act_eigfun.spectral()]
 #'
 #' @export
 #'
@@ -64,8 +64,8 @@ spectral <- function(S, multiplicity = TRUE, tol=.Machine$double.eps^0.5, ...){
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns A representation of the requested eigenspace.
-#' @seealso [qwalkr::get_eigproj], [qwalkr::get_eigschur],
-#'   [qwalkr::get_eigspace.spectral]
+#' @seealso [qwalkr::get_eigproj()], [qwalkr::get_eigschur()],
+#'   [qwalkr::get_eigspace.spectral()]
 #' @export
 #'
 #'
@@ -87,7 +87,7 @@ get_eigspace <- function(object, ...) UseMethod("get_eigspace")
 #'   \eqn{V_{id}} is some submatrix `V[, _]`.
 #'
 #' @export
-#' @seealso [qwalkr::spectral], [qwalkr::get_eigspace]
+#' @seealso [qwalkr::spectral()], [qwalkr::get_eigspace()]
 #'
 #' @examples
 #' # Spectra is {2, -1} with multiplicities one and two respectively.
@@ -113,8 +113,8 @@ get_eigspace.spectral <- function(object, id, ...){
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns A representation of the requested eigen-projector.
-#' @seealso [qwalkr::get_eigspace], [qwalkr::get_eigschur],
-#'    [qwalkr::get_eigproj.spectral]
+#' @seealso [qwalkr::get_eigspace()], [qwalkr::get_eigschur()],
+#'    [qwalkr::get_eigproj.spectral()]
 #' @export
 #'
 get_eigproj <- function(object, ...) UseMethod("get_eigproj")
@@ -137,7 +137,7 @@ get_eigproj <- function(object, ...) UseMethod("get_eigproj")
 #'
 #'   \deqn{E_{id} = V_{id}V_{id}^*}
 #'
-#' @seealso [qwalkr::spectral], [qwalkr::get_eigproj]
+#' @seealso [qwalkr::spectral()], [qwalkr::get_eigproj()]
 #'
 #' @export
 #'
@@ -166,8 +166,8 @@ get_eigproj.spectral <- function(object, id, ...){
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns A representation of the requested Schur cross-product.
-#' @seealso [qwalkr::get_eigspace], [qwalkr::get_eigproj],
-#'    [qwalkr::get_eigschur.spectral]
+#' @seealso [qwalkr::get_eigspace()], [qwalkr::get_eigproj()],
+#'    [qwalkr::get_eigschur.spectral()]
 #' @export
 #'
 get_eigschur <- function(object, ...) UseMethod("get_eigschur")
@@ -186,7 +186,7 @@ get_eigschur <- function(object, ...) UseMethod("get_eigschur")
 #'
 #' @returns The Schur product of the corresponding eigenprojectors, \eqn{E_{id_1} \circ E_{id_2}}.
 #'
-#' @seealso [qwalkr::spectral], [qwalkr::get_eigschur]
+#' @seealso [qwalkr::spectral()], [qwalkr::get_eigschur()]
 #'
 #' @export
 #'
@@ -221,7 +221,7 @@ get_eigschur.spectral <- function(object, id1, id2=NULL, ...){
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns The resulting operator from the application of the function.
-#' @seealso [qwalkr::act_eigfun.spectral]
+#' @seealso [qwalkr::act_eigfun.spectral()]
 #' @export
 #'
 act_eigfun <- function(object, ...) UseMethod("act_eigfun")
@@ -247,7 +247,7 @@ act_eigfun <- function(object, ...) UseMethod("act_eigfun")
 #'
 #'   \deqn{f(H) = \sum_k f(\lambda_k) E_k}
 #'
-#' @seealso [qwalkr::spectral], [qwalkr::act_eigfun]
+#' @seealso [qwalkr::spectral()], [qwalkr::act_eigfun()]
 #' @export
 #'
 #' @examples

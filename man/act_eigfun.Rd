@@ -18,5 +18,5 @@ The resulting operator from the application of the function.
 Apply a Function to an Operator
 }
 \seealso{
-\link{act_eigfun.spectral}
+\code{\link[=act_eigfun.spectral]{act_eigfun.spectral()}}
 }

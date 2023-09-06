@@ -35,5 +35,5 @@ get_eigspace(decomp, id=1)
 
 }
 \seealso{
-\link{spectral}, \link{get_eigspace}
+\code{\link[=spectral]{spectral()}}, \code{\link[=get_eigspace]{get_eigspace()}}
 }

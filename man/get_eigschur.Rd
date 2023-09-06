@@ -18,6 +18,6 @@ A representation of the requested Schur cross-product.
 Extract a Schur Cross-Product from an Operator
 }
 \seealso{
-\link{get_eigspace}, \link{get_eigproj},
-\link{get_eigschur.spectral}
+\code{\link[=get_eigspace]{get_eigspace()}}, \code{\link[=get_eigproj]{get_eigproj()}},
+\code{\link[=get_eigschur.spectral]{get_eigschur.spectral()}}
 }

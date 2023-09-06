@@ -18,6 +18,6 @@ The mixing matrix of the quantum walk.
 Get the Mixing Matrix of a Quantum Walk
 }
 \seealso{
-\link{unitary_matrix}, \link{avg_matrix}, \link{gavg_matrix},
-\link{mixing_matrix.ctqwalk}
+\code{\link[=unitary_matrix]{unitary_matrix()}}, \code{\link[=avg_matrix]{avg_matrix()}}, \code{\link[=gavg_matrix]{gavg_matrix()}},
+\code{\link[=mixing_matrix.ctqwalk]{mixing_matrix.ctqwalk()}}
 }

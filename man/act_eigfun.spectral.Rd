@@ -45,5 +45,5 @@ act_eigfun(decomp, FUN = function(x, y) x^y, 3)
 
 }
 \seealso{
-\link{spectral}, \link{act_eigfun}
+\code{\link[=spectral]{spectral()}}, \code{\link[=act_eigfun]{act_eigfun()}}
 }

@@ -25,7 +25,7 @@ ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
 
 }
 \seealso{
-\code{\link[=spectral]{spectral()}}, \link{unitary_matrix.ctqwalk},
-\link{mixing_matrix.ctqwalk}, \link{avg_matrix.ctqwalk},
-\link{gavg_matrix.ctqwalk}
+\code{\link[=spectral]{spectral()}}, \code{\link[=unitary_matrix.ctqwalk]{unitary_matrix.ctqwalk()}},
+\code{\link[=mixing_matrix.ctqwalk]{mixing_matrix.ctqwalk()}}, \code{\link[=avg_matrix.ctqwalk]{avg_matrix.ctqwalk()}},
+\code{\link[=gavg_matrix.ctqwalk]{gavg_matrix.ctqwalk()}}
 }

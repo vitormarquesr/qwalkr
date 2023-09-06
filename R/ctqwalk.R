@@ -8,9 +8,9 @@
 #' @returns A list with the walk related objects, i.e the hamiltonian and its spectral
 #'   decomposition (See [qwalkr::spectral()] for further details)
 #'
-#' @seealso [qwalkr::spectral()], [qwalkr::unitary_matrix.ctqwalk],
-#' [qwalkr::mixing_matrix.ctqwalk], [qwalkr::avg_matrix.ctqwalk],
-#' [qwalkr::gavg_matrix.ctqwalk]
+#' @seealso [qwalkr::spectral()], [qwalkr::unitary_matrix.ctqwalk()],
+#' [qwalkr::mixing_matrix.ctqwalk()], [qwalkr::avg_matrix.ctqwalk()],
+#' [qwalkr::gavg_matrix.ctqwalk()]
 #' @export
 #'
 #' @examples
