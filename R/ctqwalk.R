@@ -30,3 +30,31 @@ ctqwalk <- function(hamiltonian, ...){
   return (output)
 }
 
+#' Print the ctqwalk output
+#'
+#' @param x an object of the class ctqwalk.
+#' @param ... further arguments passed to or from other methods.
+#'
+#' @returns Called mainly for its side effects. However, also
+#'    returns `x` invisibly.
+#' @export
+print.ctqwalk <- function(x, ...){
+  n <- length(x$multiplicity)
+
+  sp <- rbind(round(x$eigvals, 2),
+              round(x$multiplicity, 1))
+
+  rownames(sp) <- c("Eigenvalue:", "Multiplicity:")
+  colnames(sp) <- rep("", n)
+
+
+  cat("Continuous-Time Quantum Walk\n\n")
+
+  cat("[+]Order:", n, "\n\n")
+
+  cat("[+]Spectrum of the Hamiltonian:\n")
+
+  print(sp)
+
+  invisible(x)
+}
