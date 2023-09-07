@@ -1,0 +1,62 @@
+---
+title: "qwalkr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{qwalkr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+`qwalkr` is a package for the analysis of the time evolution of quantum walks. The package consists mainly of methods for the numerical estimation of matrices that arise in this field of research. This vignette intends to give an overview of the core functionalities provided by `qwalkr`.
+
+## Installation
+
+Currently, `qwalkr` is available only on GitHub. You can install it with the code below:
+
+```{r, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("vitormarquesr/qwalkr")
+
+```
+
+
+## Usage
+
+To use `qwalkr`, you must first load it like so:
+
+```{r}
+library(qwalkr)
+
+```
+
+Now, you are all set.
+
+## Creating a Quantum Walk
+
+At the moment, `qwalkr` only supports continuous-time quantum walks. 
+
+You can create a continuous-time quantum walk by calling `ctqwalk` with an additional argument representing the Hamiltonian of the system i.e. a hermitian matrix. For instance, let's create a walk on the complete graph of order three ($K_3$), the Hamiltonian is going to be its adjacency matrix.
+
+```{r}
+
+K3 <- rbind(c(0, 1, 1),
+           c(1, 0, 1),
+           c(1, 1, 0))
+w <- ctqwalk(hamiltonian = K3)
+
+w
+
+```
+The `ctqwalk` object stores the spectral decomposition of the Hamiltonian for the future usage of other methods. We can get a glimpse of the eigenvalues and their multiplicities by printing the object. 
+
+`ctqwalk` runs `spectral()` under the hood and tries to infer eigenvalue multiplicity, you can disable that feature with `multiplicity=FALSE` or set the tolerance for numerical equality with `tol`, check the reference for `spectral()` for further reference.
+
+## Investigating 
+
