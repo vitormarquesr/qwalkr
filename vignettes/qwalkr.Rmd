@@ -42,7 +42,7 @@ Now, you are all set.
 
 At the moment, `qwalkr` only supports continuous-time quantum walks. 
 
-You can create a continuous-time quantum walk by calling `ctqwalk` with an additional argument representing the Hamiltonian of the system i.e. a hermitian matrix. For instance, let's create a walk on the complete graph of order three ($K_3$), the Hamiltonian is going to be its adjacency matrix.
+You can create a continuous-time quantum walk by calling `qwalkr::ctqwalk()` with an additional argument representing the Hamiltonian of the system i.e. a hermitian matrix. For instance, let's create a walk on the complete graph of order three ($K_3$), the Hamiltonian is going to be its adjacency matrix.
 
 ```{r}
 
@@ -50,13 +50,126 @@ K3 <- rbind(c(0, 1, 1),
            c(1, 0, 1),
            c(1, 1, 0))
 w <- ctqwalk(hamiltonian = K3)
+```
 
+The `ctqwalk` object stores the spectral decomposition of the Hamiltonian for future usage by other methods. We can get a glimpse of the eigenvalues and their multiplicities by printing the object. 
+
+```{r}
 w
+```
+
+`qwalkr::ctqwalk()` runs `qwalkr::spectral()` under the hood and tries to infer eigenvalue multiplicity, you can disable this feature with `multiplicity=FALSE` or set the tolerance for numerical equality with `tol`. 
+
+Let's talk a bit about `spectral`, the linear algebra system used by `qwalkr`.  
+
+## Linear Algebra System - Spectral
+
+`qwalkr::spectral()` is a constructor for class `spectral` which enhances base R spectral decomposition function `base::eigen()`, providing specialized treatment for hermitian matrices. Its constructor and methods can handle repeated eigenvalues, orthogonal projectors, matrix functions, and so on. 
+
+You can create an instance by providing a hermitian matrix to `qwalkr::spectral()`:
+
+```{r}
+A <- rbind(c(0, 1, 1),
+           c(1, 0, 1),
+           c(1, 1, 0))
+
+s <- spectral(A)
 
 ```
-The `ctqwalk` object stores the spectral decomposition of the Hamiltonian for the future usage of other methods. We can get a glimpse of the eigenvalues and their multiplicities by printing the object. 
 
-`ctqwalk` runs `spectral()` under the hood and tries to infer eigenvalue multiplicity, you can disable that feature with `multiplicity=FALSE` or set the tolerance for numerical equality with `tol`, check the reference for `spectral()` for further reference.
+The object stores the ordered eigenvalues (descending) and their multiplicities alongside their eigenvectors:
 
-## Investigating 
+```{r}
+s
+```
+You can turn off eigenvalue multiplicity inference with `multiplicity=FALSE` and set the tolerance for numerical equality with `tol=1e-10`.
+
+### Methods
+
+With a `spectral` instance in hand, we can extract several matrices of interest. Use `qwalkr::get_eigspace()` to extract the eigenspace associated with an eigenvalue. For instance, let's extract the eigenvectors corresponding to the eigenvalue -1 by providing its index in the ordered spectra (two in this case)
+
+```{r}
+
+get_eigspace(s, id = 2)
+
+```
+Since the eigenvalue -1 has multiplicity two, its eigenspace has dimension two as well, thus we get two eigenvectors. If we extract the 2-eigenspace, we only get one vector.
+
+```{r}
+
+get_eigspace(s, id=1)
+
+```
+
+We can extract the orthogonal projector onto the -1-eigenspace by calling `qwalkr::get_eigproj()` in the same way as the previous function:
+
+```{r}
+
+E2 <- get_eigproj(s, id=2)
+E2
+
+```
+Since the eigenspace has dimension two, its trace (`qwalkr::tr()`) is going to take such a value
+
+```{r}
+
+tr(E2)
+
+```
+As to the 2-eigenspace we get
+
+```{r}
+E1 <- get_eigproj(s, id=1)
+E1
+
+tr(E1)
+
+```
+
+For additional methods for class spectral check its help page.
+
+### Quantum Walks of class spectral
+
+As with continuous-time quantum walks, some walks have their evolution influenced by the spectrum of the Hamiltonian. In such a case, the class representing the walk is also a child of `spectral` and thus inherits its methods. For instance, a `ctqwalk` object is also an instance of `spectral`, and hence the methods of the previous section apply:
+
+```{r}
+w
+
+get_eigspace(w, id=2)
+
+class(w)
+
+```
+
+## Time-Evolution
+
+You can get the unitary time evolution operator of the walk by calling `qwalkr::unitary_matrix()` with the time `t` you want to evaluate it at. Let's take a look at the operator of the walk on $K_3$ at time $t=\frac{\pi}{3}$:
+
+```{r}
+unitary_matrix(w, t=pi/3)
+
+```
+Analogously, the mixing matrix of the walk can be obtained with `qwalkr::mixing_matrix()`:
+
+```{r}
+mixing_matrix(w, t=pi/3)
+
+```
+
+## Average Evolution
+
+Use `qwalkr::avg_matrix()` to obtain the (standard) average mixing matrix:
+
+```{r}
+avg_matrix(w)
+
+```
+To instead calculate the (generalized) average mixing matrix under an arbitrary probability distribution, call `qwalkr::gavg_matrix()` with an additional parameter `R` containing samples of the desired distribution. For instance, the average mixing matrix of $K_3$ under a standard Exponential random variable can be obtained with:
+
+
+```{r}
+set.seed(10)
+gavg_matrix(w, R=rexp(1000))
+
+```
 
