@@ -39,18 +39,18 @@ ctqwalk <- function(hamiltonian, ...){
 #'    returns `x` invisibly.
 #' @export
 print.ctqwalk <- function(x, ...){
-  n <- length(x$multiplicity)
+  m <- length(x$multiplicity)
 
   sp <- rbind(round(x$eigvals, 2),
               round(x$multiplicity, 1))
 
   rownames(sp) <- c("Eigenvalue:", "Multiplicity:")
-  colnames(sp) <- rep("", n)
+  colnames(sp) <- rep("", m)
 
 
   cat("Continuous-Time Quantum Walk\n\n")
 
-  cat("[+]Order:", n, "\n\n")
+  cat("[+]Order:", sum(x$multiplicity), "\n\n")
 
   cat("[+]Spectrum of the Hamiltonian:\n")
 
