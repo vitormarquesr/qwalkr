@@ -2,7 +2,7 @@
 % Please edit documentation in R/time_evolution.R
 \name{unitary_matrix}
 \alias{unitary_matrix}
-\title{Get the Unitary Time Evolution Operator of a Quantum Walk}
+\title{The Unitary Time Evolution Operator of a Quantum Walk}
 \usage{
 unitary_matrix(object, ...)
 }
@@ -15,7 +15,7 @@ unitary_matrix(object, ...)
 The unitary time evolution operator.
 }
 \description{
-Get the Unitary Time Evolution Operator of a Quantum Walk
+The Unitary Time Evolution Operator of a Quantum Walk
 }
 \seealso{
 \code{\link[=mixing_matrix]{mixing_matrix()}}, \code{\link[=unitary_matrix.ctqwalk]{unitary_matrix.ctqwalk()}}

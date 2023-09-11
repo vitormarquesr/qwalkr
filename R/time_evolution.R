@@ -1,5 +1,5 @@
 
-#' Get the Unitary Time Evolution Operator of a Quantum Walk
+#' The Unitary Time Evolution Operator of a Quantum Walk
 #'
 #' @param object a representation of the quantum walk.
 #' @param ... further arguments passed to or from other methods.
@@ -12,16 +12,9 @@
 unitary_matrix <- function(object, ...) UseMethod("unitary_matrix")
 
 
-#' Get the Unitary Time Evolution Operator of a Continuous-Time Quantum Walk
+#' The Unitary Time Evolution Operator of a Continuous-Time Quantum Walk
 #'
-#' @param object an instance of class `ctqwalk`.
-#' @param t it will be returned the evolution operator at time `t`.
-#' @param ... further arguments passed to or from other methods.
-#'
-#' @returns The unitary time evolution operator of the continuous-time quantum walk
-#'   at time `t`.
-#'
-#'   If \eqn{|\psi(t) \rangle} is the quantum state of the system at time \eqn{t}, and
+#' @details If \eqn{|\psi(t) \rangle} is the quantum state of the system at time \eqn{t}, and
 #'   \eqn{H} the Hamiltonian operator, then the evolution is governed by
 #'   the Schrodinger equation
 #'
@@ -38,8 +31,12 @@ unitary_matrix <- function(object, ...) UseMethod("unitary_matrix")
 #'
 #'    in which \eqn{H = \sum_r \lambda_r E_r}.
 #'
-#'    `unitary_matrix` returns the result of the above calculation for a
-#'    provided `t`.
+#' @param object an instance of class `ctqwalk`.
+#' @param t it will be returned the evolution operator at time `t`.
+#' @param ... further arguments passed to or from other methods.
+#'
+#' @returns `unitary_matrix()` returns the unitary time evolution operator of the
+#'   CTQW evaluated at time `t`.
 #'
 #' @export
 #' @seealso [qwalkr::ctqwalk()], [qwalkr::unitary_matrix()],
@@ -56,7 +53,7 @@ unitary_matrix.ctqwalk <- function(object, t, ...){
   return (Ut)
 }
 
-#' Get the Mixing Matrix of a Quantum Walk
+#' The Mixing Matrix of a Quantum Walk
 #'
 #' @param object a representation of the quantum walk.
 #' @param ... further arguments passed to or from other methods.
@@ -69,16 +66,10 @@ unitary_matrix.ctqwalk <- function(object, t, ...){
 mixing_matrix <- function(object, ...) UseMethod("mixing_matrix")
 
 
-#' Get the Mixing Matrix of a Continuous-Time Quantum Walk
+#' The Mixing Matrix of a Continuous-Time Quantum Walk
 #'
-#' @param object an instance of class `ctqwalk`.
-#' @param t it will be returned the mixing matrix at time `t`.
-#' @param ... further arguments passed to or from other methods.
-#'
-#' @returns The mixing matrix of the continuous-time quantum walk.
-#'
-#'    Let \eqn{U(t)} be the time evolution operator of the
-#'    quantum walk at time \eqn{t}, then the mixing matrix is given by
+#' @details Let \eqn{U(t)} be the time evolution operator of the quantum walk at
+#'    time \eqn{t}, then the mixing matrix is given by
 #'
 #'    \deqn{M(t) = U(t) \circ \overline{U(t)}}
 #'
@@ -89,8 +80,12 @@ mixing_matrix <- function(object, ...) UseMethod("mixing_matrix")
 #'    of measuring the standard basis state \eqn{|b \rangle} at time \eqn{t}, given that
 #'    the quantum walk started at \eqn{|a \rangle}.
 #'
-#'    `mixing_matrix` returns the result of the above calculations for a
-#'    provided `t`.
+#' @param object an instance of class `ctqwalk`.
+#' @param t it will be returned the mixing matrix at time `t`.
+#' @param ... further arguments passed to or from other methods.
+#'
+#' @returns `mixing_matrix()` returns the  mixing matrix of the CTQW
+#'   evaluated at time `t`.
 #'
 #' @export
 #' @seealso [qwalkr::ctqwalk()], [qwalkr::mixing_matrix()]

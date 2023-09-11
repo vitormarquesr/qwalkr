@@ -34,3 +34,6 @@ cartesian(P3, K3)
 # Return the adjacency matrix of P3 X P3
 cartesian(P3)
 }
+\seealso{
+\code{\link[=J]{J()}}, \code{\link[=tr]{tr()}}, \code{\link[=trdot]{trdot()}}
+}

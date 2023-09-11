@@ -21,3 +21,6 @@ Returns the all-ones matrix of order \code{n}.
 # Return the all-ones matrix of order 5.
 J(5)
 }
+\seealso{
+\code{\link[=tr]{tr()}}, \code{\link[=trdot]{trdot()}}, \code{\link[=cartesian]{cartesian()}}
+}

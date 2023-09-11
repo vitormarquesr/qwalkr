@@ -2,7 +2,7 @@
 % Please edit documentation in R/avg_evolution.R
 \name{avg_matrix}
 \alias{avg_matrix}
-\title{Get the Average Mixing Matrix of a Quantum Walk}
+\title{The Average Mixing Matrix of a Quantum Walk}
 \usage{
 avg_matrix(object, ...)
 }
@@ -15,7 +15,7 @@ avg_matrix(object, ...)
 The average mixing matrix.
 }
 \description{
-Get the Average Mixing Matrix of a Quantum Walk
+The Average Mixing Matrix of a Quantum Walk
 }
 \seealso{
 \code{\link[=mixing_matrix]{mixing_matrix()}}, \code{\link[=gavg_matrix]{gavg_matrix()}}, \code{\link[=avg_matrix.ctqwalk]{avg_matrix.ctqwalk()}}

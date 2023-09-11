@@ -22,6 +22,9 @@ Computes the trace inner product of two matrices \code{A} and \code{B}.
 A <- rbind(1:5, 2:6, 3:7)
 B <- rbind(7:11, 8:12, 9:13)
 
-# Calculate the trace inner product of A and B
+# Compute the trace inner product of A and B
 trdot(A, B)
+}
+\seealso{
+\code{\link[=J]{J()}}, \code{\link[=tr]{tr()}}, \code{\link[=cartesian]{cartesian()}}
 }

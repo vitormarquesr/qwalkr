@@ -22,3 +22,6 @@ A <- rbind(1:5, 2:6, 3:7)
 # Calculate the trace of A
 tr(A)
 }
+\seealso{
+\code{\link[=J]{J()}}, \code{\link[=trdot]{trdot()}}, \code{\link[=cartesian]{cartesian()}}
+}

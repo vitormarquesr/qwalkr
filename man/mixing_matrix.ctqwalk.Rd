@@ -2,7 +2,7 @@
 % Please edit documentation in R/time_evolution.R
 \name{mixing_matrix.ctqwalk}
 \alias{mixing_matrix.ctqwalk}
-\title{Get the Mixing Matrix of a Continuous-Time Quantum Walk}
+\title{The Mixing Matrix of a Continuous-Time Quantum Walk}
 \usage{
 \method{mixing_matrix}{ctqwalk}(object, t, ...)
 }
@@ -14,10 +14,15 @@
 \item{...}{further arguments passed to or from other methods.}
 }
 \value{
-The mixing matrix of the continuous-time quantum walk.
-
-Let \eqn{U(t)} be the time evolution operator of the
-quantum walk at time \eqn{t}, then the mixing matrix is given by
+\code{mixing_matrix()} returns the  mixing matrix of the CTQW
+evaluated at time \code{t}.
+}
+\description{
+The Mixing Matrix of a Continuous-Time Quantum Walk
+}
+\details{
+Let \eqn{U(t)} be the time evolution operator of the quantum walk at
+time \eqn{t}, then the mixing matrix is given by
 
 \deqn{M(t) = U(t) \circ \overline{U(t)}}
 
@@ -27,12 +32,6 @@ probability density of the quantum system at time \eqn{t}.
 More precisely, the \eqn{(M(t))_{ab}} entry gives us the probability
 of measuring the standard basis state \eqn{|b \rangle} at time \eqn{t}, given that
 the quantum walk started at \eqn{|a \rangle}.
-
-\code{mixing_matrix} returns the result of the above calculations for a
-provided \code{t}.
-}
-\description{
-Get the Mixing Matrix of a Continuous-Time Quantum Walk
 }
 \examples{
 walk <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))

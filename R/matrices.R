@@ -11,6 +11,8 @@
 #'
 #' @export
 #'
+#' @seealso [qwalkr::tr()], [qwalkr::trdot()], [qwalkr::cartesian()]
+#'
 #' @examples
 #' # Return the all-ones matrix of order 5.
 #' J(5)
@@ -29,6 +31,7 @@ J <- function(n){
 #'   then \eqn{tr(A) = \sum_{i=1}^{n}a_{ii}}.
 #'
 #' @export
+#' @seealso [qwalkr::J()], [qwalkr::trdot()], [qwalkr::cartesian()]
 #'
 #' @examples
 #' A <- rbind(1:5, 2:6, 3:7)
@@ -51,12 +54,13 @@ tr <- function(A){
 #'
 #'   \deqn{\langle A, B \rangle := tr(A^*B)}
 #' @export
+#' @seealso [qwalkr::J()], [qwalkr::tr()], [qwalkr::cartesian()]
 #'
 #' @examples
 #' A <- rbind(1:5, 2:6, 3:7)
 #' B <- rbind(7:11, 8:12, 9:13)
 #'
-#' # Calculate the trace inner product of A and B
+#' # Compute the trace inner product of A and B
 #' trdot(A, B)
 trdot <- function(A, B){
   return (tr(Conj(t(A)) %*% B))
@@ -80,6 +84,7 @@ trdot <- function(A, B){
 #'   \deqn{A(G \times H) = A(G) \otimes I_{m\ x\ m} + I_{n\ x\ n} \otimes A(H)}
 #'
 #' @export
+#' @seealso [qwalkr::J()], [qwalkr::tr()], [qwalkr::trdot()]
 #'
 #' @examples
 #' P3 <- matrix(c(0,1,0,1,0,1,0,1,0), nrow=3)
@@ -101,6 +106,5 @@ cartesian <- function(G, H=NULL){
 
   return (W)
 }
-
 
 

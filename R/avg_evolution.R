@@ -1,4 +1,4 @@
-#' Get the Average Mixing Matrix of a Quantum Walk
+#' The Average Mixing Matrix of a Quantum Walk
 #'
 #' @param object a representation of the quantum walk.
 #' @param ... further arguments passed to or from other methods.
@@ -10,25 +10,22 @@
 avg_matrix <- function(object, ...) UseMethod("avg_matrix")
 
 
-#' Get the Average Mixing Matrix of a Continuous-Time Quantum Walk
+#' The Average Mixing Matrix of a Continuous-Time Quantum Walk
+#'
+#' @details Let \eqn{M(t)} be the mixing matrix of the quantum walk, then the average mixing matrix is defined as
+#'
+#'    \deqn{\widehat{M} := \lim_{T \to \infty} \frac{1}{T}\int_{0}^T M(t)\textrm{d}t}
+#'
+#'    and encodes the long-term average behavior of the walk. Given the Hamiltonian
+#'    \eqn{H = \sum_r \lambda_r E_r}, it is possible to prove that
+#'
+#'    \deqn{\widehat{M} = \sum_r E_r \circ E_r}
 #'
 #' @param object a representation of the quantum walk.
 #' @param ... further arguments passed to or from other methods.
 #'
-#' @returns The average mixing matrix of the continuous-time quantum walk.
-#'
-#'    Let \eqn{M(t)} be the mixing matrix of the quantum walk, then the
-#'    average mixing matrix is defined as
-#'
-#'    \deqn{\widehat{M} := \lim_{T \to \infty} \frac{1}{T}\int_{0}^T M(t)\textrm{d}t}
-#'
-#'    and encodes the long-term average behavior of the walk. It is possible to prove that
-#'
-#'    \deqn{\widehat{M} = \sum_r E_r \circ E_r}
-#'
-#'    in which \eqn{E_r} is the orthogonal projector onto the \eqn{\lambda_r}-eigenspace.
-#'
-#'    `avg_matrix` returns the matrix from the above calculation.
+#' @returns `avg_matrix()` returns the average mixing matrix
+#'   as a square matrix of the same order as the walk.
 #'
 #' @export
 #'
@@ -48,7 +45,7 @@ avg_matrix.ctqwalk <- function(object, ...){
   return (M)
 }
 
-#' Get the Generalized Average Mixing Matrix of a Quantum Walk
+#' The Generalized Average Mixing Matrix of a Quantum Walk
 #'
 #' @param object a representation of the quantum walk.
 #' @param ... further arguments passed to or from other methods.
@@ -60,21 +57,20 @@ avg_matrix.ctqwalk <- function(object, ...){
 gavg_matrix <- function(object, ...) UseMethod("gavg_matrix")
 
 
-#' Get the Generalized Average Mixing Matrix of a Continuous-Time Quantum Walk
+#' The Generalized Average Mixing Matrix of a Continuous-Time Quantum Walk
+#'
+#' @details Let \eqn{M(t)} be the mixing matrix of the quantum walk and \eqn{R} a random variable
+#'   with associated probability density function \eqn{f_R(t)}. Then the generalized average mixing
+#'   matrix under \eqn{R} is defined as
+#'
+#'    \deqn{\widehat{M}_R := \mathbb{E}[M(R)] = \int_{-\infty}^{\infty} M(t)f_R(t)\textrm{d}t}
 #'
 #' @param object a representation of the quantum walk.
 #' @param R samples from the random variable \eqn{R} (For performance, it is recommended at most 10000 samples).
 #' @param ... further arguments passed to or from other methods.
 #'
-#' @returns The generalized average mixing matrix of the continuous-time quantum walk.
-#'
-#'    Let \eqn{M(t)} be the mixing matrix of the quantum walk and \eqn{f_R(t)} the probability
-#'    density function associated with \eqn{R}, then the generalized average mixing matrix under \eqn{R}
-#'    is defined as
-#'
-#'    \deqn{\widehat{M}_R := \mathbb{E}[M(R)] = \int_{-\infty}^{\infty} M(t)f_R(t)\textrm{d}t}
-#'
-#'    `gavg_matrix` returns an approximation of the above matrix by the Monte Carlo approach.
+#' @returns `gavg_matrix()` returns the generalized average mixing matrix
+#'   as a square matrix of the same order as the walk.
 #'
 #' @export
 #'

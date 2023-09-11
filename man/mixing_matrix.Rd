@@ -2,7 +2,7 @@
 % Please edit documentation in R/time_evolution.R
 \name{mixing_matrix}
 \alias{mixing_matrix}
-\title{Get the Mixing Matrix of a Quantum Walk}
+\title{The Mixing Matrix of a Quantum Walk}
 \usage{
 mixing_matrix(object, ...)
 }
@@ -15,7 +15,7 @@ mixing_matrix(object, ...)
 The mixing matrix of the quantum walk.
 }
 \description{
-Get the Mixing Matrix of a Quantum Walk
+The Mixing Matrix of a Quantum Walk
 }
 \seealso{
 \code{\link[=unitary_matrix]{unitary_matrix()}}, \code{\link[=avg_matrix]{avg_matrix()}}, \code{\link[=gavg_matrix]{gavg_matrix()}},

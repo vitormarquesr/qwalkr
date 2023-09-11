@@ -12,6 +12,7 @@ Functions and methods to create, visualize, and investigate properties of Contin
 Useful links:
 \itemize{
   \item \url{https://github.com/vitormarquesr/qwalkr}
+  \item \url{https://vitormarquesr.github.io/qwalkr/}
   \item Report bugs at \url{https://github.com/vitormarquesr/qwalkr/issues}
 }
 

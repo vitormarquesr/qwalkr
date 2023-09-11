@@ -2,7 +2,7 @@
 % Please edit documentation in R/time_evolution.R
 \name{unitary_matrix.ctqwalk}
 \alias{unitary_matrix.ctqwalk}
-\title{Get the Unitary Time Evolution Operator of a Continuous-Time Quantum Walk}
+\title{The Unitary Time Evolution Operator of a Continuous-Time Quantum Walk}
 \usage{
 \method{unitary_matrix}{ctqwalk}(object, t, ...)
 }
@@ -14,9 +14,13 @@
 \item{...}{further arguments passed to or from other methods.}
 }
 \value{
-The unitary time evolution operator of the continuous-time quantum walk
-at time \code{t}.
-
+\code{unitary_matrix()} returns the unitary time evolution operator of the
+CTQW evaluated at time \code{t}.
+}
+\description{
+The Unitary Time Evolution Operator of a Continuous-Time Quantum Walk
+}
+\details{
 If \eqn{|\psi(t) \rangle} is the quantum state of the system at time \eqn{t}, and
 \eqn{H} the Hamiltonian operator, then the evolution is governed by
 the Schrodinger equation
@@ -33,12 +37,6 @@ and it can be calculated as
 \deqn{U(t) = e^{iHt} = \sum_r e^{i t \lambda_r}E_r}
 
 in which \eqn{H = \sum_r \lambda_r E_r}.
-
-\code{unitary_matrix} returns the result of the above calculation for a
-provided \code{t}.
-}
-\description{
-Get the Unitary Time Evolution Operator of a Continuous-Time Quantum Walk
 }
 \examples{
 walk <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))

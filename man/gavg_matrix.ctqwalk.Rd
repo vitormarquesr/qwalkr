@@ -2,7 +2,7 @@
 % Please edit documentation in R/avg_evolution.R
 \name{gavg_matrix.ctqwalk}
 \alias{gavg_matrix.ctqwalk}
-\title{Get the Generalized Average Mixing Matrix of a Continuous-Time Quantum Walk}
+\title{The Generalized Average Mixing Matrix of a Continuous-Time Quantum Walk}
 \usage{
 \method{gavg_matrix}{ctqwalk}(object, R, ...)
 }
@@ -14,18 +14,18 @@
 \item{...}{further arguments passed to or from other methods.}
 }
 \value{
-The generalized average mixing matrix of the continuous-time quantum walk.
-
-Let \eqn{M(t)} be the mixing matrix of the quantum walk and \eqn{f_R(t)} the probability
-density function associated with \eqn{R}, then the generalized average mixing matrix under \eqn{R}
-is defined as
-
-\deqn{\widehat{M}_R := \mathbb{E}[M(R)] = \int_{-\infty}^{\infty} M(t)f_R(t)\textrm{d}t}
-
-\code{gavg_matrix} returns an approximation of the above matrix by the Monte Carlo approach.
+\code{gavg_matrix()} returns the generalized average mixing matrix
+as a square matrix of the same order as the walk.
 }
 \description{
-Get the Generalized Average Mixing Matrix of a Continuous-Time Quantum Walk
+The Generalized Average Mixing Matrix of a Continuous-Time Quantum Walk
+}
+\details{
+Let \eqn{M(t)} be the mixing matrix of the quantum walk and \eqn{R} a random variable
+with associated probability density function \eqn{f_R(t)}. Then the generalized average mixing
+matrix under \eqn{R} is defined as
+
+\deqn{\widehat{M}_R := \mathbb{E}[M(R)] = \int_{-\infty}^{\infty} M(t)f_R(t)\textrm{d}t}
 }
 \examples{
 walk <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))

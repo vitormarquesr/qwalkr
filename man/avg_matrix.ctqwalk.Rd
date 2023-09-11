@@ -2,7 +2,7 @@
 % Please edit documentation in R/avg_evolution.R
 \name{avg_matrix.ctqwalk}
 \alias{avg_matrix.ctqwalk}
-\title{Get the Average Mixing Matrix of a Continuous-Time Quantum Walk}
+\title{The Average Mixing Matrix of a Continuous-Time Quantum Walk}
 \usage{
 \method{avg_matrix}{ctqwalk}(object, ...)
 }
@@ -12,23 +12,21 @@
 \item{...}{further arguments passed to or from other methods.}
 }
 \value{
-The average mixing matrix of the continuous-time quantum walk.
-
-Let \eqn{M(t)} be the mixing matrix of the quantum walk, then the
-average mixing matrix is defined as
+\code{avg_matrix()} returns the average mixing matrix
+as a square matrix of the same order as the walk.
+}
+\description{
+The Average Mixing Matrix of a Continuous-Time Quantum Walk
+}
+\details{
+Let \eqn{M(t)} be the mixing matrix of the quantum walk, then the average mixing matrix is defined as
 
 \deqn{\widehat{M} := \lim_{T \to \infty} \frac{1}{T}\int_{0}^T M(t)\textrm{d}t}
 
-and encodes the long-term average behavior of the walk. It is possible to prove that
+and encodes the long-term average behavior of the walk. Given the Hamiltonian
+\eqn{H = \sum_r \lambda_r E_r}, it is possible to prove that
 
 \deqn{\widehat{M} = \sum_r E_r \circ E_r}
-
-in which \eqn{E_r} is the orthogonal projector onto the \eqn{\lambda_r}-eigenspace.
-
-\code{avg_matrix} returns the matrix from the above calculation.
-}
-\description{
-Get the Average Mixing Matrix of a Continuous-Time Quantum Walk
 }
 \examples{
 walk <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
