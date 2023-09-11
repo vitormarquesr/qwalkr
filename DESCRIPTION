@@ -8,7 +8,7 @@ Description: Functions and methods to create, visualize, and investigate
     efficiently calculate matrices that arise in the context of Quantum
     Walks.
 License: MIT + file LICENSE
-URL: https://github.com/vitormarquesr/qwalkr
+URL: https://github.com/vitormarquesr/qwalkr, https://vitormarquesr.github.io/qwalkr/
 BugReports: https://github.com/vitormarquesr/qwalkr/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
