@@ -4,6 +4,8 @@
 # qwalkr
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/vitormarquesr/qwalkr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/vitormarquesr/qwalkr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Overview
