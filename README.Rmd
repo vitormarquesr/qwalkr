@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# qwalkr
+# qwalkr <a href="https://vitormarquesr.github.io/qwalkr/"><img src="man/figures/logo.png" align="right" height="139" alt="qwalkr website" /></a>
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/vitormarquesr/qwalkr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/vitormarquesr/qwalkr/actions/workflows/R-CMD-check.yaml)

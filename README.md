@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# qwalkr
+# qwalkr <a href="https://vitormarquesr.github.io/qwalkr/"><img src="man/figures/logo.png" align="right" height="139" alt="qwalkr website" /></a>
 
 <!-- badges: start -->
 

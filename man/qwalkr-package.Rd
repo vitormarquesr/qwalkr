@@ -6,6 +6,8 @@
 \alias{qwalkr-package}
 \title{qwalkr: Handle Continuous-Time Quantum Walks with R}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Functions and methods to create, visualize, and investigate properties of Continous-Time Quantum Walks. In addition, tools to efficiently calculate matrices that arise in the context of Quantum Walks.
 }
 \seealso{
