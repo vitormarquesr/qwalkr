@@ -78,6 +78,18 @@
     <div class="dont-index"><p><code><a href="mixing_matrix.html">mixing_matrix()</a></code>, <code><a href="avg_matrix.html">avg_matrix()</a></code>, <code><a href="gavg_matrix.ctqwalk.html">gavg_matrix.ctqwalk()</a></code></p></div>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="ctqwalk.html">ctqwalk</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">gavg_matrix</span><span class="op">(</span><span class="va">w</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="co">#-&gt; gavg_matrix.ctqwalk(...)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]     [,2]      [,3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.6340132 0.211044 0.1549428</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 0.2110440 0.577912 0.2110440</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 0.1549428 0.211044 0.6340132</span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
