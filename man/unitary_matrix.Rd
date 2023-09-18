@@ -17,6 +17,12 @@ The unitary time evolution operator.
 \description{
 The Unitary Time Evolution Operator of a Quantum Walk
 }
+\examples{
+w <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
+
+unitary_matrix(w, t = 2*pi) #-> unitary_matrix.ctqwalk(...)
+
+}
 \seealso{
 \code{\link[=mixing_matrix]{mixing_matrix()}}, \code{\link[=unitary_matrix.ctqwalk]{unitary_matrix.ctqwalk()}}
 }

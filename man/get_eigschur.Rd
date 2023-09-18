@@ -17,6 +17,12 @@ A representation of the requested Schur cross-product.
 \description{
 Extract a Schur Cross-Product from an Operator
 }
+\examples{
+s <- spectral(rbind(c(0.5, 0.3), c(0.3,0.7)))
+
+get_eigschur(s, 1, 2) #-> get_eigschur.spectral(...)
+
+}
 \seealso{
 \code{\link[=get_eigspace]{get_eigspace()}}, \code{\link[=get_eigproj]{get_eigproj()}},
 \code{\link[=get_eigschur.spectral]{get_eigschur.spectral()}}

@@ -17,6 +17,12 @@ The generalized average mixing matrix.
 \description{
 The Generalized Average Mixing Matrix of a Quantum Walk
 }
+\examples{
+w <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
+
+gavg_matrix(w, rnorm(100)) #-> gavg_matrix.ctqwalk(...)
+
+}
 \seealso{
 \code{\link[=mixing_matrix]{mixing_matrix()}}, \code{\link[=avg_matrix]{avg_matrix()}}, \code{\link[=gavg_matrix.ctqwalk]{gavg_matrix.ctqwalk()}}
 }

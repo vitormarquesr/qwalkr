@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Functions and methods to create, visualize, and investigate properties of Continous-Time Quantum Walks. In addition, tools to efficiently calculate matrices that arise in the context of Quantum Walks.
+Functions and tools for creating, visualizing, and investigating properties of continuous-time quantum walks, including efficient calculation of matrices such as the mixing matrix, average mixing matrix, and spectral decomposition of the Hamiltonian. E. Farhi (1997): \href{https://arxiv.org/abs/quant-ph/9706062v2}{arXiv:quant-ph/9706062v2}; C. Godsil (2011) \href{https://arxiv.org/abs/1103.2578v3}{arXiv:1103.2578v3}.
 }
 \seealso{
 Useful links:
@@ -20,7 +20,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Vitor Marques \email{vmrodriguespro@gmail.com}
+\strong{Maintainer}: Vitor Marques \email{vmrodriguespro@gmail.com} [copyright holder]
 
 }
 \keyword{internal}

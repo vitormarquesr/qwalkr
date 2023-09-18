@@ -9,6 +9,11 @@
 #'
 #' @seealso [qwalkr::mixing_matrix()], [qwalkr::unitary_matrix.ctqwalk()]
 #'
+#' @examples
+#' w <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
+#'
+#' unitary_matrix(w, t = 2*pi) #-> unitary_matrix.ctqwalk(...)
+#'
 unitary_matrix <- function(object, ...) UseMethod("unitary_matrix")
 
 
@@ -62,6 +67,11 @@ unitary_matrix.ctqwalk <- function(object, t, ...){
 #' @seealso [qwalkr::unitary_matrix()], [qwalkr::avg_matrix()], [qwalkr::gavg_matrix()],
 #' [qwalkr::mixing_matrix.ctqwalk()]
 #' @export
+#'
+#' @examples
+#' w <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
+#'
+#' mixing_matrix(w, t = 2*pi) #-> mixing_matrix.ctqwalk(...)
 #'
 mixing_matrix <- function(object, ...) UseMethod("mixing_matrix")
 

@@ -67,7 +67,10 @@ spectral <- function(S, multiplicity = TRUE, tol=.Machine$double.eps^0.5, ...){
 #' @seealso [qwalkr::get_eigproj()], [qwalkr::get_eigschur()],
 #'   [qwalkr::get_eigspace.spectral()]
 #' @export
+#' @examples
+#' s <- spectral(rbind(c(0.5, 0.3), c(0.3,0.7)))
 #'
+#' get_eigspace(s, 1) #-> get_eigspace.spectral(...)
 #'
 get_eigspace <- function(object, ...) UseMethod("get_eigspace")
 
@@ -116,6 +119,10 @@ get_eigspace.spectral <- function(object, id, ...){
 #' @seealso [qwalkr::get_eigspace()], [qwalkr::get_eigschur()],
 #'    [qwalkr::get_eigproj.spectral()]
 #' @export
+#' @examples
+#' s <- spectral(rbind(c(0.5, 0.3), c(0.3,0.7)))
+#'
+#' get_eigproj(s, 1) #-> get_eigproj.spectral(...)
 #'
 get_eigproj <- function(object, ...) UseMethod("get_eigproj")
 
@@ -169,6 +176,10 @@ get_eigproj.spectral <- function(object, id, ...){
 #' @seealso [qwalkr::get_eigspace()], [qwalkr::get_eigproj()],
 #'    [qwalkr::get_eigschur.spectral()]
 #' @export
+#' @examples
+#' s <- spectral(rbind(c(0.5, 0.3), c(0.3,0.7)))
+#'
+#' get_eigschur(s, 1, 2) #-> get_eigschur.spectral(...)
 #'
 get_eigschur <- function(object, ...) UseMethod("get_eigschur")
 
@@ -223,6 +234,10 @@ get_eigschur.spectral <- function(object, id1, id2=NULL, ...){
 #' @returns The resulting operator from the application of the function.
 #' @seealso [qwalkr::act_eigfun.spectral()]
 #' @export
+#' @examples
+#' s <- spectral(rbind(c(0.5, 0.3), c(0.3,0.7)))
+#'
+#' act_eigfun(s, function(x) x^2) #-> act_eigfun.spectral(...)
 #'
 act_eigfun <- function(object, ...) UseMethod("act_eigfun")
 

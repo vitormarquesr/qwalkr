@@ -17,6 +17,12 @@ A representation of the requested eigen-projector.
 \description{
 Extract an Eigen-Projector from an operator
 }
+\examples{
+s <- spectral(rbind(c(0.5, 0.3), c(0.3,0.7)))
+
+get_eigproj(s, 1) #-> get_eigproj.spectral(...)
+
+}
 \seealso{
 \code{\link[=get_eigspace]{get_eigspace()}}, \code{\link[=get_eigschur]{get_eigschur()}},
 \code{\link[=get_eigproj.spectral]{get_eigproj.spectral()}}

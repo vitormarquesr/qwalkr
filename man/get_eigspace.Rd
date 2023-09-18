@@ -17,6 +17,12 @@ A representation of the requested eigenspace.
 \description{
 Extract an Eigenspace from an Operator
 }
+\examples{
+s <- spectral(rbind(c(0.5, 0.3), c(0.3,0.7)))
+
+get_eigspace(s, 1) #-> get_eigspace.spectral(...)
+
+}
 \seealso{
 \code{\link[=get_eigproj]{get_eigproj()}}, \code{\link[=get_eigschur]{get_eigschur()}},
 \code{\link[=get_eigspace.spectral]{get_eigspace.spectral()}}

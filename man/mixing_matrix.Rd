@@ -17,6 +17,12 @@ The mixing matrix of the quantum walk.
 \description{
 The Mixing Matrix of a Quantum Walk
 }
+\examples{
+w <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
+
+mixing_matrix(w, t = 2*pi) #-> mixing_matrix.ctqwalk(...)
+
+}
 \seealso{
 \code{\link[=unitary_matrix]{unitary_matrix()}}, \code{\link[=avg_matrix]{avg_matrix()}}, \code{\link[=gavg_matrix]{gavg_matrix()}},
 \code{\link[=mixing_matrix.ctqwalk]{mixing_matrix.ctqwalk()}}

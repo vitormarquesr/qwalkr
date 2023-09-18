@@ -17,6 +17,12 @@ The resulting operator from the application of the function.
 \description{
 Apply a Function to an Operator
 }
+\examples{
+s <- spectral(rbind(c(0.5, 0.3), c(0.3,0.7)))
+
+act_eigfun(s, function(x) x^2) #-> act_eigfun.spectral(...)
+
+}
 \seealso{
 \code{\link[=act_eigfun.spectral]{act_eigfun.spectral()}}
 }

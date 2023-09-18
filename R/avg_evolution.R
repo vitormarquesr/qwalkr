@@ -7,6 +7,11 @@
 #' @export
 #'
 #' @seealso [qwalkr::mixing_matrix()], [qwalkr::gavg_matrix()], [qwalkr::avg_matrix.ctqwalk()]
+#' @examples
+#' w <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
+#'
+#' avg_matrix(w) #-> avg_matrix.ctqwalk(...)
+#'
 avg_matrix <- function(object, ...) UseMethod("avg_matrix")
 
 
@@ -54,6 +59,12 @@ avg_matrix.ctqwalk <- function(object, ...){
 #' @export
 #'
 #' @seealso [qwalkr::mixing_matrix()], [qwalkr::avg_matrix()], [qwalkr::gavg_matrix.ctqwalk()]
+#'
+#' @examples
+#' w <- ctqwalk(matrix(c(0,1,0,1,0,1,0,1,0), nrow=3))
+#'
+#' gavg_matrix(w, rnorm(100)) #-> gavg_matrix.ctqwalk(...)
+#'
 gavg_matrix <- function(object, ...) UseMethod("gavg_matrix")
 
 

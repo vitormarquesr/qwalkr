@@ -2,11 +2,8 @@ Package: qwalkr
 Title: Handle Continuous-Time Quantum Walks with R
 Version: 0.0.0.9000
 Authors@R: 
-    person("Vitor", "Marques", , "vmrodriguespro@gmail.com", role = c("aut", "cre"))
-Description: Functions and methods to create, visualize, and investigate
-    properties of Continous-Time Quantum Walks. In addition, tools to
-    efficiently calculate matrices that arise in the context of Quantum
-    Walks.
+    person("Vitor", "Marques", , "vmrodriguespro@gmail.com", role = c("aut", "cre", "cph"))
+Description: Functions and tools for creating, visualizing, and investigating properties of continuous-time quantum walks, including efficient calculation of matrices such as the mixing matrix, average mixing matrix, and spectral decomposition of the Hamiltonian. E. Farhi (1997): <arXiv:quant-ph/9706062v2>; C. Godsil (2011) <arXiv:1103.2578v3>.
 License: MIT + file LICENSE
 URL: https://github.com/vitormarquesr/qwalkr, https://vitormarquesr.github.io/qwalkr/
 BugReports: https://github.com/vitormarquesr/qwalkr/issues
