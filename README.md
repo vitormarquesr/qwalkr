@@ -43,8 +43,13 @@ evolution of such systems:
 
 ## Installation
 
-Currently, qwalkr is only available on GitHub. You can install the
-development version of it like so:
+You can install the stable version of `qwalkr` from CRAN:
+
+``` r
+install.packages("qwalkr")
+```
+
+For the development version, you can install from Github like so:
 
 ``` r
 # install.packages("devtools")

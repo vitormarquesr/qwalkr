@@ -18,14 +18,18 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-Currently, `qwalkr` is available only on GitHub. You can install it with the code below:
+You can install the stable version of `qwalkr` from CRAN:
 
-```{r, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("vitormarquesr/qwalkr")
-
+```{r, eval=FALSE}
+install.packages("qwalkr")
 ```
 
+For the development version, you can install from Github like so:
+
+```{r, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("vitormarquesr/qwalkr")
+```
 
 ## Usage
 
