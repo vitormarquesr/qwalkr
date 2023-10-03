@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">qwalkr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,12 +92,9 @@ functionalities provided by <code>qwalkr</code>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the stable version of <code>qwalkr</code> from
-CRAN:</p>
+<p>Currently, <code>qwalkr</code> is available only on GitHub. You can
+install it with the code below:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"qwalkr"</span><span class="op">)</span></span></code></pre></div>
-<p>For the development version, you can install from Github like so:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"vitormarquesr/qwalkr"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -105,7 +102,7 @@ CRAN:</p>
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p>To use <code>qwalkr</code>, you must first load it like so:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vitormarquesr/qwalkr" class="external-link">qwalkr</a></span><span class="op">)</span></span></code></pre></div>
 <p>Now, you are all set.</p>
 </div>
@@ -119,7 +116,7 @@ quantum walks.</p>
 the Hamiltonian of the system i.e. a hermitian matrix. For instance,
 let’s create a walk on the complete graph of order three (<span class="math inline">\(K_3\)</span>), the Hamiltonian is going to be its
 adjacency matrix.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">K3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>           <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span>
@@ -128,7 +125,7 @@ adjacency matrix.</p>
 <p>The <code>ctqwalk</code> object stores the spectral decomposition of
 the Hamiltonian for future usage by other methods. We can get a glimpse
 of the eigenvalues and their multiplicities by printing the object.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">w</span></span>
 <span><span class="co">#&gt; Continuous-Time Quantum Walk</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -155,7 +152,7 @@ hermitian matrices. Its constructor and methods can handle repeated
 eigenvalues, orthogonal projectors, matrix functions, and so on.</p>
 <p>You can create an instance by providing a hermitian matrix to
 <code><a href="../reference/spectral.html">qwalkr::spectral()</a></code>:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>           <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>           <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
@@ -163,7 +160,7 @@ eigenvalues, orthogonal projectors, matrix functions, and so on.</p>
 <span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/spectral.html">spectral</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span></code></pre></div>
 <p>The object stores the ordered eigenvalues (descending) and their
 multiplicities alongside their eigenvectors:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s</span></span>
 <span><span class="co">#&gt; $eigvals</span></span>
 <span><span class="co">#&gt; [1]  2 -1</span></span>
@@ -190,7 +187,7 @@ matrices of interest. Use <code><a href="../reference/get_eigspace.html">qwalkr:
 the eigenspace associated with an eigenvalue. For instance, let’s
 extract the eigenvectors corresponding to the eigenvalue -1 by providing
 its index in the ordered spectra (two in this case)</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="../reference/get_eigspace.html">get_eigspace</a></span><span class="op">(</span><span class="va">s</span>, id <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            [,1]       [,2]</span></span>
@@ -200,7 +197,7 @@ its index in the ordered spectra (two in this case)</p>
 <p>Since the eigenvalue -1 has multiplicity two, its eigenspace has
 dimension two as well, thus we get two eigenvectors. If we extract the
 2-eigenspace, we only get one vector.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="../reference/get_eigspace.html">get_eigspace</a></span><span class="op">(</span><span class="va">s</span>, id<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt;           [,1]</span></span>
@@ -210,7 +207,7 @@ dimension two as well, thus we get two eigenvectors. If we extract the
 <p>We can extract the orthogonal projector onto the -1-eigenspace by
 calling <code><a href="../reference/get_eigproj.html">qwalkr::get_eigproj()</a></code> in the same way as the
 previous function:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">E2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_eigproj.html">get_eigproj</a></span><span class="op">(</span><span class="va">s</span>, id<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">E2</span></span>
@@ -220,12 +217,12 @@ previous function:</p>
 <span><span class="co">#&gt; [3,] -0.3333333 -0.3333333  0.6666667</span></span></code></pre></div>
 <p>Since the eigenspace has dimension two, its trace
 (<code><a href="../reference/tr.html">qwalkr::tr()</a></code>) is going to take such a value</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="../reference/tr.html">tr</a></span><span class="op">(</span><span class="va">E2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2</span></span></code></pre></div>
 <p>As to the 2-eigenspace we get</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">E1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_eigproj.html">get_eigproj</a></span><span class="op">(</span><span class="va">s</span>, id<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">E1</span></span>
 <span><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
@@ -246,7 +243,7 @@ the class representing the walk is also a child of <code>spectral</code>
 and thus inherits its methods. For instance, a <code>ctqwalk</code>
 object is also an instance of <code>spectral</code>, and hence the
 methods of the previous section apply:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">w</span></span>
 <span><span class="co">#&gt; Continuous-Time Quantum Walk</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -275,7 +272,7 @@ calling <code><a href="../reference/unitary_matrix.html">qwalkr::unitary_matrix(
 <code>t</code> you want to evaluate it at. Let’s take a look at the
 operator of the walk on <span class="math inline">\(K_3\)</span> at time
 <span class="math inline">\(t=\frac{\pi}{3}\)</span>:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/unitary_matrix.html">unitary_matrix</a></span><span class="op">(</span><span class="va">w</span>, t<span class="op">=</span><span class="va">pi</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                       [,1]                  [,2]                  [,3]</span></span>
 <span><span class="co">#&gt; [1,]  0.1666667-0.2886751i -0.3333333+0.5773503i -0.3333333+0.5773503i</span></span>
@@ -283,7 +280,7 @@ operator of the walk on <span class="math inline">\(K_3\)</span> at time
 <span><span class="co">#&gt; [3,] -0.3333333+0.5773503i -0.3333333+0.5773503i  0.1666667-0.2886751i</span></span></code></pre></div>
 <p>Analogously, the mixing matrix of the walk can be obtained with
 <code><a href="../reference/mixing_matrix.html">qwalkr::mixing_matrix()</a></code>:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/mixing_matrix.html">mixing_matrix</a></span><span class="op">(</span><span class="va">w</span>, t<span class="op">=</span><span class="va">pi</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
 <span><span class="co">#&gt; [1,] 0.1111111 0.4444444 0.4444444</span></span>
@@ -295,7 +292,7 @@ operator of the walk on <span class="math inline">\(K_3\)</span> at time
 </h2>
 <p>Use <code><a href="../reference/avg_matrix.html">qwalkr::avg_matrix()</a></code> to obtain the (standard)
 average mixing matrix:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/avg_matrix.html">avg_matrix</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span></span>
 <span><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
 <span><span class="co">#&gt; [1,] 0.5555556 0.2222222 0.2222222</span></span>
@@ -307,7 +304,7 @@ arbitrary probability distribution, call
 <code>R</code> containing samples of the desired distribution. For
 instance, the average mixing matrix of <span class="math inline">\(K_3\)</span> under a standard Exponential random
 variable can be obtained with:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/gavg_matrix.html">gavg_matrix</a></span><span class="op">(</span><span class="va">w</span>, R<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">rexp</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
