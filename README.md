@@ -8,6 +8,9 @@
 [![R-CMD-check](https://github.com/vitormarquesr/qwalkr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/vitormarquesr/qwalkr/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/qwalkr)](https://CRAN.R-project.org/package=qwalkr)
+[![Downloads](https://cranlogs.r-pkg.org/badges/qwalkr)](https://cran.r-project.org/package=qwalkr)
 <!-- badges: end -->
 
 ## Overview
